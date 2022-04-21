@@ -1,8 +1,8 @@
 export const initState = {
-  user: "",
-  email: "",
-  access_token: "",
-  refresh_token: "",
+  user: undefined,
+  email: undefined,
+  access_token: undefined,
+  refresh_token: undefined,
 };
 
 export const AuthReducer = (state = initState, action: any) => {
