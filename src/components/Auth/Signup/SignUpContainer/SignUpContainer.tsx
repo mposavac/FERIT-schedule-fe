@@ -1,8 +1,9 @@
 import React from "react";
-import { useAuthDispatch } from "../../../../context";
-import { SignUpForm } from "../../../../hooks/types";
+import { Link } from "react-router-dom";
+import { signUpUser, useAuthDispatch } from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
-import AuthBackground from "../../Shared/AuthBackground";
+import { SignUpForm } from "../../../../interfaces/auth.types";
+import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
 import SignUpPresenter from "../SignUpPresenter/SignUpPresenter";
 
 export default function SignUpContainer() {
@@ -15,10 +16,18 @@ export default function SignUpContainer() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //SIGNUP REQ
+    signUpUser(dispatch, values);
   };
   return (
-    <AuthBackground>
+    <AuthBackground
+      additionalContent={
+        <div className="auth__container__inner__additional__text">
+          <p>Already have an account?</p>
+          <Link to="/login">Login.</Link>
+        </div>
+      }
+      backgroundSide="right"
+    >
       <SignUpPresenter
         values={values}
         handleChange={handleChange}

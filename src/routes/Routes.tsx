@@ -1,5 +1,6 @@
 import {
   BrowserRouter as Router,
+  Navigate,
   Route,
   Routes as Routing,
 } from "react-router-dom";
@@ -10,12 +11,13 @@ import PrivateRoute from "./PrivateRoute";
 const Routes = () => (
   <Router>
     <Routing>
-      <Route path="/" />
+      <Route path="/" element={<PrivateRoute></PrivateRoute>} />
       <Route path="/login" element={<LoginContainer />} />
       <Route path="/signup" element={<SignUpContainer />} />
       <Route path="/raspored" element={<PrivateRoute></PrivateRoute>} />
       <Route path="/prostorije" element={<PrivateRoute></PrivateRoute>} />
       <Route path="/djelatnici" element={<PrivateRoute></PrivateRoute>} />
+      <Route path="*" element={<Navigate replace to="/" />} />
     </Routing>
   </Router>
 );

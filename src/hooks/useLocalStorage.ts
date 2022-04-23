@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const getStorageValue = (key: any, defaultValue: any) => {
+const getStorageValue = (key: string, defaultValue: any) => {
   if (window) {
     const savedItem = localStorage.getItem(key);
     const initialValue = savedItem ? JSON.parse(savedItem) : defaultValue;
@@ -8,7 +8,7 @@ const getStorageValue = (key: any, defaultValue: any) => {
   }
 };
 
-export const useLocalStorage = (key: any, defaultValue: any) => {
+export const useLocalStorage = (key: string, defaultValue: any) => {
   const [value, setValue] = useState(() => getStorageValue(key, defaultValue));
 
   useEffect(() => {

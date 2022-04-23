@@ -4,7 +4,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const PrivateRoute = ({ children }: any) => {
   let [user] = useLocalStorage("user", null);
-  let isAuthenticated = user && user.user;
+  let isAuthenticated = user && user.username;
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
 

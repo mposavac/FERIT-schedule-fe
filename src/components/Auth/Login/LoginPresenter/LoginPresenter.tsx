@@ -8,18 +8,25 @@ export default function LoginPresenter({
 }: LoginPresenterProps) {
   return (
     <form onSubmit={submit}>
-      <input
-        name="email"
-        type="email"
-        value={values.email}
-        onChange={handleChange}
-      />
-      <input
-        name="password"
-        type="password"
-        value={values.password}
-        onChange={handleChange}
-      />
+      <h2>Login</h2>
+      <div className="inputs__container">
+        <label htmlFor="email">E-mail</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={values.email}
+          onChange={handleChange}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          value={values.password}
+          onChange={handleChange}
+        />
+      </div>
       <button>Login</button>
     </form>
   );

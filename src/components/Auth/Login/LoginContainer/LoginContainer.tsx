@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { loginUser, useAuthDispatch } from "../../../../context";
-import { LoginForm } from "../../../../hooks/types";
 import { useForm } from "../../../../hooks/useForm";
-import AuthBackground from "../../Shared/AuthBackground";
+import { LoginForm } from "../../../../interfaces/auth.types";
+import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
 import LoginPresenter from "../LoginPresenter/LoginPresenter";
 
 export default function LoginContainer() {
@@ -18,7 +19,14 @@ export default function LoginContainer() {
   };
 
   return (
-    <AuthBackground>
+    <AuthBackground
+      additionalContent={
+        <div className="auth__container__inner__additional__text">
+          <p>Don't have account yet?</p>
+          <Link to="/signup">Create an account.</Link>
+        </div>
+      }
+    >
       <LoginPresenter
         values={values}
         handleChange={handleChange}

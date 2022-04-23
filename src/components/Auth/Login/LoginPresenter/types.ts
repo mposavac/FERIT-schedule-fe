@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { LoginForm } from "../../../../hooks/types";
+import { LoginForm } from "../../../../interfaces/auth.types";
 
 export interface LoginPresenterProps {
   values: LoginForm;
