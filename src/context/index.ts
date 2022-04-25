@@ -1,11 +1,23 @@
 import { loginUser, signUpUser, logoutUser } from "./actions";
-import { AuthProvider, useAuthState, useAuthDispatch } from "./context";
+import {
+  AuthProvider,
+  LoadingProvider,
+  ErrorProvider,
+  useAuthState,
+  useAuthDispatch,
+  useLoading,
+  useErrorMsg,
+} from "./context";
 
 export {
   loginUser,
   signUpUser,
   logoutUser,
   AuthProvider,
+  LoadingProvider,
+  ErrorProvider,
   useAuthState,
   useAuthDispatch,
+  useLoading,
+  useErrorMsg,
 };

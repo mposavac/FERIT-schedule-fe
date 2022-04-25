@@ -1,9 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { loginUser, useAuthDispatch } from "../../../../context";
+import {
+  loginUser,
+  useAuthDispatch,
+  useErrorMsg,
+  useLoading,
+} from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
 import { LoginForm } from "../../../../interfaces/auth.types";
-import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
+import AuthBackground from "../../shared/AuthBackground/AuthBackground";
 import LoginPresenter from "../LoginPresenter/LoginPresenter";
 
 export default function LoginContainer() {
@@ -12,10 +18,22 @@ export default function LoginContainer() {
     password: "",
   });
   const dispatch = useAuthDispatch();
+  const navigate = useNavigate();
+  const { showLoader, hideLoader } = useLoading();
+  const { showMsg } = useErrorMsg();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    loginUser(dispatch, values);
+    showLoader();
+    loginUser(dispatch, values)
+      .then(() => {
+        hideLoader();
+        navigate("/");
+      })
+      .catch((e) => {
+        hideLoader();
+        showMsg(e.message);
+      });
   };
 
   return (

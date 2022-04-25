@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signUpUser, useAuthDispatch } from "../../../../context";
+import { useLoading, useErrorMsg } from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
 import { SignUpForm } from "../../../../interfaces/auth.types";
-import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
+import AuthBackground from "../../shared/AuthBackground/AuthBackground";
 import SignUpPresenter from "../SignUpPresenter/SignUpPresenter";
 
 export default function SignUpContainer() {
@@ -13,10 +14,22 @@ export default function SignUpContainer() {
     password: "",
   });
   const dispatch = useAuthDispatch();
+  const navigate = useNavigate();
+  const { showLoader, hideLoader } = useLoading();
+  const { showMsg } = useErrorMsg();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUpUser(dispatch, values);
+    showLoader();
+    signUpUser(dispatch, values)
+      .then(() => {
+        hideLoader();
+        navigate("/");
+      })
+      .catch((e) => {
+        hideLoader();
+        showMsg(e.message);
+      });
   };
   return (
     <AuthBackground
