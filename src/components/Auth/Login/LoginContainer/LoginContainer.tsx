@@ -9,7 +9,7 @@ import {
 } from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
 import { LoginForm } from "../../../../interfaces/auth.types";
-import AuthBackground from "../../shared/AuthBackground/AuthBackground";
+import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
 import LoginPresenter from "../LoginPresenter/LoginPresenter";
 
 export default function LoginContainer() {

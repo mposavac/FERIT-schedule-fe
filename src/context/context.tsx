@@ -7,9 +7,20 @@ import {
 } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { initState, AuthReducer } from "./reducer";
-import { ErrorContextInterface, LoadingContextInterface } from "./types";
+import {
+  AuthStateInterface,
+  ErrorContextInterface,
+  LoadingContextInterface,
+} from "./types";
 
-const AuthStateContext = createContext({});
+const AuthStateContext = createContext({
+  id: undefined,
+  username: undefined,
+  email: undefined,
+  access_token: undefined,
+  refresh_token: undefined,
+});
+
 const AuthDispatchContext = createContext({});
 const LoadingContext = createContext({
   isLoading: false,
@@ -23,9 +34,10 @@ const ErrorContext = createContext({
   showMsg: (msg: string) => {},
 });
 
-export const useAuthState = () => {
+export const useAuthState = (): AuthStateInterface => {
   const context = useContext(AuthStateContext);
-  if (context) return context;
+  if (!context) throw new Error("There is no AuthStateContext.");
+  return context;
 };
 
 export const useAuthDispatch = () => {

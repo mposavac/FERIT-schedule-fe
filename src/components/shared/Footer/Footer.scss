@@ -1,0 +1,23 @@
+@import "../../../styles/common";
+
+.footer__container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  background: $color-grey-dark;
+  color: #ccc;
+  font-size: 14px;
+  p {
+    margin: 0 10px;
+  }
+  span {
+    margin: 0 2px;
+    height: calc($footer-height - 15px);
+    width: 1px;
+    background: rgba(#fff, 0.5);
+  }
+}

@@ -4,7 +4,7 @@ import { signUpUser, useAuthDispatch } from "../../../../context";
 import { useLoading, useErrorMsg } from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
 import { SignUpForm } from "../../../../interfaces/auth.types";
-import AuthBackground from "../../shared/AuthBackground/AuthBackground";
+import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
 import SignUpPresenter from "../SignUpPresenter/SignUpPresenter";
 
 export default function SignUpContainer() {

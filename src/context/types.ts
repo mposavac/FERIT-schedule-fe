@@ -14,3 +14,11 @@ export interface ErrorContextInterface {
   hideMsg: () => void;
   showMsg: (msg: string) => void;
 }
+
+export interface AuthStateInterface {
+  id: string | undefined;
+  username: string | undefined;
+  email: string | undefined;
+  access_token: string | undefined;
+  refresh_token: string | undefined;
+}
