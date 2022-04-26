@@ -31,4 +31,8 @@ export const signUpUser = async (dispatch: any, payload: SignUpForm) => {
   });
 };
 
-export const logoutUser = async (dispatch: any, payload: any) => {};
+export const logoutUser = async (dispatch: any) => {
+  dispatch({
+    type: "LOGOUT_SUCCESS",
+  });
+};
