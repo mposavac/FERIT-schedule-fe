@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { logoutUser, useAuthDispatch } from "../../../context";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { logoutUser, useAuthDispatch, useAuthState } from "../../../context";
 import NavigationPresenter from "../NavigationPresenter/NavigationPresenter";
 
 export default function NavigationContainer() {
@@ -9,11 +8,11 @@ export default function NavigationContainer() {
   const navigate = useNavigate();
   const dispatch = useAuthDispatch();
   const [shouldRender, setShouldRender] = useState(false);
-  let [user] = useLocalStorage("user", null);
+  let user = useAuthState();
 
   useEffect(() => {
-    console.log(pathname);
     if (pathname !== "/login" && pathname !== "/signup") setShouldRender(true);
+    else setShouldRender(false);
   }, [pathname]);
 
   const logout = () => {

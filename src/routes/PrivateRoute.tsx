@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useAuthState } from "../context";
 
 const PrivateRoute = ({ children }: any) => {
-  let [user] = useLocalStorage("user", null);
+  let user = useAuthState();
   let isAuthenticated = user && user.username;
   return isAuthenticated ? children : <Navigate to="/login" />;
 };

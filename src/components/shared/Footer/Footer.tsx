@@ -8,6 +8,7 @@ export default function Footer() {
 
   useEffect(() => {
     if (pathname !== "/login" && pathname !== "/signup") setShouldRender(true);
+    else setShouldRender(false);
   }, [pathname]);
 
   return shouldRender ? (

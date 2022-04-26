@@ -103,13 +103,13 @@
       }
       &:hover {
         .dropdown__menu__content {
-          animation: fadeIn 300ms forwards;
+          animation: hoverFadeIn 300ms forwards;
           display: flex;
           flex-direction: column;
           justify-content: space-evenly;
           text-align: right;
         }
-        @keyframes fadeIn {
+        @keyframes hoverFadeIn {
           from {
             opacity: 0;
             top: 60px;

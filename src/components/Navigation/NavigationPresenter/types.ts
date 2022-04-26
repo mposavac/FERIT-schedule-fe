@@ -1,4 +1,4 @@
 export interface NavigationPresenterProps {
   handleLogout: () => void;
-  username: string;
+  username: string | undefined;
 }
