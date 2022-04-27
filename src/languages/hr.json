@@ -1,0 +1,17 @@
+{
+    "login": "Prijava",
+    "signup": "Registracija",
+    "logout": "Odjava",
+    "password": "Lozinka",
+    "username": "Korisničko ime",
+    "e-mail": "E-mail",
+    "settings": "Postavke",
+    "navigation.rooms": "Prostorije",
+    "navigation.staff": "Djelatnici",
+    "navigation.calendar": "Kalendar",
+    "login.account.create.text": "Još nemate račun?",
+    "login.account.create.link": "Registrajte se.",
+    "signup.account.create.text": "Već imate račun?",
+    "signup.account.create.link": "Prijavite se.",
+    "signup.submit.button": "Napravi račun"
+}

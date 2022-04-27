@@ -15,6 +15,10 @@ export interface ErrorContextInterface {
   showMsg: (msg: string) => void;
 }
 
+export interface TranslationContextInterface {
+  t: (key: string) => string;
+}
+
 export interface AuthStateInterface {
   id: string | undefined;
   username: string | undefined;

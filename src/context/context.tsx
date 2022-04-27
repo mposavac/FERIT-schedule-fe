@@ -11,7 +11,9 @@ import {
   AuthStateInterface,
   ErrorContextInterface,
   LoadingContextInterface,
+  TranslationContextInterface,
 } from "./types";
+import * as languages from "../languages";
 
 const AuthStateContext = createContext({
   id: undefined,
@@ -22,6 +24,7 @@ const AuthStateContext = createContext({
 });
 
 const AuthDispatchContext = createContext({});
+
 const LoadingContext = createContext({
   isLoading: false,
   hideLoader: () => {},
@@ -32,6 +35,10 @@ const ErrorContext = createContext({
   message: "",
   hideMsg: () => {},
   showMsg: (msg: string) => {},
+});
+
+const TranslationContext = createContext({
+  t: (key: string) => key,
 });
 
 export const useAuthState = (): AuthStateInterface => {
@@ -54,6 +61,12 @@ export const useLoading = (): LoadingContextInterface => {
 export const useErrorMsg = (): ErrorContextInterface => {
   const context = useContext(ErrorContext);
   if (!context) throw new Error("There is no ErrorContext.");
+  return context;
+};
+
+export const useTranslation = (): TranslationContextInterface => {
+  const context = useContext(TranslationContext);
+  if (!context) throw new Error("There is no TranslationContext.");
   return context;
 };
 
@@ -105,5 +118,17 @@ export const ErrorProvider = ({ children }: any) => {
     <ErrorContext.Provider value={{ message, hideMsg, showMsg }}>
       {children}
     </ErrorContext.Provider>
+  );
+};
+
+export const TranslationProvider = ({ children }: any): any => {
+  const t = (key: string): string => {
+    return (languages as any)["hr"][key] || key;
+  };
+
+  return (
+    <TranslationContext.Provider value={{ t }}>
+      {children}
+    </TranslationContext.Provider>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "../../../../context";
 import { LoginPresenterProps } from "./types";
 
 export default function LoginPresenter({
@@ -6,11 +7,12 @@ export default function LoginPresenter({
   handleChange,
   submit,
 }: LoginPresenterProps) {
+  const { t } = useTranslation();
   return (
     <form onSubmit={submit}>
-      <h2>Login</h2>
+      <h2>{t("login")}</h2>
       <div className="inputs__container">
-        <label htmlFor="email">E-mail</label>
+        <label htmlFor="email">{t("e-mail")}</label>
         <input
           id="email"
           name="email"
@@ -18,7 +20,7 @@ export default function LoginPresenter({
           value={values.email}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t("password")}</label>
         <input
           id="password"
           name="password"
@@ -27,7 +29,7 @@ export default function LoginPresenter({
           onChange={handleChange}
         />
       </div>
-      <button>Login</button>
+      <button>{t("login")}</button>
     </form>
   );
 }

@@ -1,0 +1,18 @@
+{
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout",
+    "password": "Password",
+    "username": "Username",
+    "e-mail": "E-mail",
+    "login.account.create.text": "Don't have an account yet?",
+    "login.account.create.link": "Create an Account.",
+    "signup.account.create.text": "Already have an account?",
+    "signup.account.create.link": "Login.",
+    "signup.submit.button": "Create an Account",
+    "settings": "Settings",
+    "navigation.rooms": "Rooms",
+    "navigation.staff": "Staff",
+    "navigation.calendar": "Calendar"
+
+}
