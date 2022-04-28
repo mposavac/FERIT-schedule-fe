@@ -1,12 +1,14 @@
-@import './common';
+@import "./common";
 
 * {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
 
-html{
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+#root {
+  position: relative;
+  min-height: 100vh;
 }

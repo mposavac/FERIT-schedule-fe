@@ -9,9 +9,10 @@ export default function InputSelectPresenter({
   toggleOpen,
   handleOptionClick,
   handleOpenOptions,
+  disabled,
 }: InputSelectPresenterProps) {
   return (
-    <div className="input__select__container">
+    <div className={`input__select__container${disabled ? " disabled" : ""}`}>
       <div
         className="input__select__container__selected"
         onClick={handleOpenOptions}

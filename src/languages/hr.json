@@ -6,6 +6,7 @@
     "username": "Korisničko ime",
     "e-mail": "E-mail",
     "settings": "Postavke",
+    "search": "Traži",
     "navigation.rooms": "Prostorije",
     "navigation.staff": "Djelatnici",
     "navigation.calendar": "Kalendar",
@@ -13,5 +14,9 @@
     "login.account.create.link": "Registrajte se.",
     "signup.account.create.text": "Već imate račun?",
     "signup.account.create.link": "Prijavite se.",
-    "signup.submit.button": "Napravi račun"
+    "signup.submit.button": "Napravi račun",
+    "form.rooms": "Pretraga po prostorijama",
+    "form.date":"Datum",
+    "form.building":"Zgrada",
+    "form.room":"Prostorija"
 }

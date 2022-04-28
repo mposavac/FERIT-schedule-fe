@@ -1,4 +1,5 @@
 import React from "react";
+import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
 import RoomsFormPresenter from "./RoomsForm/RoomsForm";
 
 import "./RoomsPresenter.scss";
@@ -6,7 +7,9 @@ import { RoomsPresenterProps } from "./types";
 
 export default function RoomsPresenter({
   values,
+  calendarEvents,
   handleFormChange,
+  handleSearch,
 }: RoomsPresenterProps) {
   //TODO: Implement real data
   const buildings = [
@@ -23,15 +26,17 @@ export default function RoomsPresenter({
   ];
 
   return (
-    <div>
+    <div className="rooms">
       <div className="rooms__form__container">
         <RoomsFormPresenter
           values={values}
           handleFormChange={handleFormChange}
+          handleSearch={handleSearch}
           buildingOptions={buildings}
           roomsOptions={rooms}
         />
       </div>
+      <CalendarContainer calendarEvents={calendarEvents} />
     </div>
   );
 }

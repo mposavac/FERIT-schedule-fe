@@ -4,8 +4,10 @@
   cursor: pointer;
   position: relative;
   margin: 5px;
+  width: 80%;
+  transition: 150ms;
   &__selected {
-    width: 80%;
+    width: 100%;
     min-width: 200px;
     height: 30px;
     padding: 0 10px;
@@ -14,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
     img {
       transition: 300ms;
       transition: 300ms;
@@ -33,11 +36,15 @@
     margin-top: 5px;
     background: $color-grey-light;
     list-style-type: none;
+    user-select: none;
     li {
       padding: 5px 0;
       &:hover {
         color: $color-ferit-blue;
       }
     }
+  }
+  &.disabled {
+    opacity: 0.4;
   }
 }

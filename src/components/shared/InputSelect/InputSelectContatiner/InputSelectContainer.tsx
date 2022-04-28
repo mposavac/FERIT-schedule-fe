@@ -7,6 +7,7 @@ const InputSelectContainer = ({
   optionsList,
   selectedOption,
   onChange,
+  disabled,
 }: InputSelectContainerProps) => {
   const [toggleOpen, setToggleOpen] = useState(false);
 
@@ -17,7 +18,7 @@ const InputSelectContainer = ({
   };
 
   const handleOpenOptions = () => {
-    setToggleOpen(!toggleOpen);
+    if (!disabled) setToggleOpen(!toggleOpen);
   };
 
   return (
@@ -27,6 +28,7 @@ const InputSelectContainer = ({
       toggleOpen={toggleOpen}
       handleOptionClick={handleOptionClick}
       handleOpenOptions={handleOpenOptions}
+      disabled={disabled}
     />
   );
 };

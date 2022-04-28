@@ -1,4 +1,6 @@
 import React from "react";
+import { useLoading } from "../../../context";
+import { useAxios } from "../../../hooks/useAxios";
 import { useForm } from "../../../hooks/useForm";
 import { RoomsForm } from "../../../interfaces/forms.type";
 import RoomsPresenter from "../RoomsPresenter/RoomsPresenter";
@@ -10,6 +12,8 @@ export default function RoomsContainer() {
     building: { value: "", text: "" },
     room: { value: "", text: "" },
   });
+  const { showLoader, hideLoader } = useLoading();
+  const [data, fetchData] = useAxios("/rooms/availability/10");
 
   const handleFormChange = (e: any) => {
     if (e["building"] || e["room"]) {
@@ -18,5 +22,19 @@ export default function RoomsContainer() {
     } else handleChange(e);
   };
 
-  return <RoomsPresenter values={values} handleFormChange={handleFormChange} />;
+  const handleSearch = () => {
+    showLoader();
+    fetchData().then(() => {
+      hideLoader();
+    });
+  };
+
+  return (
+    <RoomsPresenter
+      values={values}
+      calendarEvents={data}
+      handleFormChange={handleFormChange}
+      handleSearch={handleSearch}
+    />
+  );
 }

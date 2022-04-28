@@ -9,6 +9,7 @@ export interface InputSelectPresenterProps {
   toggleOpen: boolean;
   handleOptionClick: (e: any) => void;
   handleOpenOptions: () => void;
+  disabled?: boolean;
 }
 
 export interface InputSelectContainerProps {
@@ -16,4 +17,5 @@ export interface InputSelectContainerProps {
   optionsList: InputSelectOption[];
   selectedOption: InputSelectOption;
   onChange: (e: any) => void;
+  disabled?: boolean;
 }
