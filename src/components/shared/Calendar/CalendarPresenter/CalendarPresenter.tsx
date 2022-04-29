@@ -1,10 +1,15 @@
 import React from "react";
+import { useTranslation } from "../../../../context";
 import { CalendarEvent, CalendarpresenterProps } from "../types";
 import "./CalendarPresenter.scss";
 
 export default function CalendarPresenter({
   calendarEvents,
+  day,
+  date,
 }: CalendarpresenterProps) {
+  const { t } = useTranslation();
+
   const renderHours = (startTime: string, endTime: string) => (
     <div className="calendar__container__hours__field">
       <p>{startTime}</p>
@@ -42,8 +47,8 @@ export default function CalendarPresenter({
       </div>
       <div className="calendar__container__day">
         <div className="calendar__container__day__name">
-          <p>Četvrtak</p>
-          <p>28.04.2022.</p>
+          <p>{t(day)}</p>
+          <p>{t(date)}</p>
         </div>
         <div className="calendar__container__day__blocks">
           {calendarEvents.map((event: CalendarEvent, i: number) =>

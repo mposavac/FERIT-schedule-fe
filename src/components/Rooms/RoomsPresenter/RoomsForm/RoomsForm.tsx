@@ -9,6 +9,8 @@ export default function RoomsFormPresenter({
   handleSearch,
   buildingOptions,
   roomsOptions,
+  isThereCalendarEvents,
+  toggleStatsOverlay,
 }: RoomsFormPresenterProps) {
   const { t } = useTranslation();
   return (
@@ -43,6 +45,9 @@ export default function RoomsFormPresenter({
         />
       </div>
       <button onClick={handleSearch}>{t("search")}</button>
+      {isThereCalendarEvents && (
+        <button onClick={toggleStatsOverlay}>{t("button.statistics")}</button>
+      )}
     </div>
   );
 }

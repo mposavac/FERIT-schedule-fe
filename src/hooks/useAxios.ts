@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuthState } from "../context";
 
-export const useAxios = (url: string) => {
-  const [data, setData] = useState(null);
+export const useAxios = <S>(url: string) => {
+  const [data, setData] = useState<S>();
   const [urlState, setUrlState] = useState("");
   const { access_token } = useAuthState();
 

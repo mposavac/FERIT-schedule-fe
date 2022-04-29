@@ -7,6 +7,7 @@ export default function CalendarContainer({
   calendarEvents,
 }: CalendarContainerProps) {
   const [events, setEvents] = useState<CalendarEvent[]>();
+
   const getClassTypeColor = (type: string) => {
     switch (type) {
       case "0":
@@ -18,16 +19,16 @@ export default function CalendarContainer({
       case "3":
         return "#CDDEFF"; //AV
       case "4":
-        return "#FFD9C9"; //lv
+        return "#FFD9C9"; //LV
       default:
         return "#fff";
     }
   };
   useEffect(() => {
-    console.log({ calendarEvents });
-    if (calendarEvents) {
+    //console.log({ calendarEvents });
+    if (calendarEvents && calendarEvents.timeSlots) {
       const dayStart = moment("08:00", "HH:mm");
-      const events = calendarEvents.map((event: any) => {
+      const events = calendarEvents.timeSlots.map((event: any) => {
         const startTime = moment(event["pocetak"], "HH:mm");
         const endTime = moment(event["kraj"], "HH:mm");
         const position = `${
@@ -46,6 +47,14 @@ export default function CalendarContainer({
       setEvents(events);
     }
   }, [calendarEvents]);
-  console.log({ events });
-  return events ? <CalendarPresenter calendarEvents={events} /> : <></>;
+
+  return events ? (
+    <CalendarPresenter
+      calendarEvents={events}
+      day={moment(calendarEvents.date).format("dddd")}
+      date={moment(calendarEvents.date).format("DD.MM.YYYY.")}
+    />
+  ) : (
+    <></>
+  );
 }

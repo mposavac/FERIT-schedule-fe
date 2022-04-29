@@ -8,6 +8,8 @@ export interface RoomsFormPresenterProps {
   handleSearch(): void;
   buildingOptions: InputSelectOption[];
   roomsOptions: InputSelectOption[];
+  isThereCalendarEvents: boolean;
+  toggleStatsOverlay(): void;
 }
 
 export interface RoomsPresenterProps {
@@ -15,4 +17,12 @@ export interface RoomsPresenterProps {
   calendarEvents: any;
   handleFormChange(e: FormEvent<HTMLFormElement> | undefined): void;
   handleSearch(): void;
+  toggleStatsOverlay(): void;
+  isStatsOpen: boolean;
+  statsData: any;
+}
+
+export interface StatisticsOverlayProps {
+  toggleStatsOverlay(): void;
+  data: any;
 }

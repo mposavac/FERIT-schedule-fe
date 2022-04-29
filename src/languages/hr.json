@@ -18,5 +18,15 @@
     "form.rooms": "Pretraga po prostorijama",
     "form.date":"Datum",
     "form.building":"Zgrada",
-    "form.room":"Prostorija"
+    "form.room":"Prostorija",
+    "button.statistics": "Prikaži statistiku",
+    "Monday": "Ponedjeljak",
+    "Tuesday": "Utorak",
+    "Wednesday": "Srijeda",
+    "Thursday": "Četvrtak",
+    "Friday": "Petak",
+    "Saturday": "Subota",
+    "Sunday": "Nedjelja",
+    "chart.available": "Slobodno",
+    "chart.unavailable": "Zauzeto"
 }

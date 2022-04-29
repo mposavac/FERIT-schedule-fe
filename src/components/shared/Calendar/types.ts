@@ -1,9 +1,13 @@
+import { RoomsResponse } from "../../../interfaces/responses.type";
+
 export interface CalendarContainerProps {
-  calendarEvents: any;
+  calendarEvents: RoomsResponse;
 }
 
 export interface CalendarpresenterProps {
-  calendarEvents: any;
+  calendarEvents: CalendarEvent[];
+  day: string;
+  date: string;
 }
 
 export interface CalendarEvent {
