@@ -17,7 +17,7 @@ export default function SearchForm({
     <div className="search__form__container__content">
       <h3>{t(searchText)}</h3>
       <div className="search__form__container__content__field">
-        <label>{t(searchText)}</label>
+        <label>{t("form.date")}</label>
         <input
           type="date"
           name="date"

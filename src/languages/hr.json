@@ -28,5 +28,7 @@
     "Saturday": "Subota",
     "Sunday": "Nedjelja",
     "chart.available": "Slobodno",
-    "chart.unavailable": "Zauzeto"
+    "chart.unavailable": "Zauzeto",
+    "toggle.availability": "Zauzeće",
+    "toggle.staff": "Po nastavniku"
 }

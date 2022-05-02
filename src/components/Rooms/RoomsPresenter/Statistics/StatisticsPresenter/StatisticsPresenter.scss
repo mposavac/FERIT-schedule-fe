@@ -1,4 +1,4 @@
-@import "../../../../styles/common";
+@import "../../../../../styles/common";
 
 .statistics__overlay__container {
   z-index: 1000;
@@ -8,6 +8,7 @@
   background: lightgray;
   overflow: hidden; // ili scroll - po potrebi
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   animation: fadeInBottom 300ms ease-in-out;

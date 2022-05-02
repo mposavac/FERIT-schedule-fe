@@ -48,7 +48,7 @@ export default function CalendarContainer({
     }
   }, [calendarEvents]);
 
-  return events ? (
+  return calendarEvents && events ? (
     <CalendarPresenter
       calendarEvents={events}
       day={moment(calendarEvents.date).format("dddd")}

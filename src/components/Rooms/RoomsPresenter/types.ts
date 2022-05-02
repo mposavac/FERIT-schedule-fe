@@ -1,5 +1,6 @@
 import { FormEvent } from "react";
 import { RoomsForm } from "../../../interfaces/forms.type";
+import { RoomsResponse } from "../../../interfaces/responses.type";
 import { InputSelectOption } from "../../shared/InputSelect/types";
 
 export interface RoomsFormPresenterProps {
@@ -14,15 +15,21 @@ export interface RoomsFormPresenterProps {
 
 export interface RoomsPresenterProps {
   values: RoomsForm;
-  calendarEvents: any;
+  calendarEvents: RoomsResponse | undefined;
   handleFormChange(e: FormEvent<HTMLFormElement> | undefined): void;
   handleSearch(): void;
   toggleStatsOverlay(): void;
   isStatsOpen: boolean;
-  statsData: any;
 }
 
-export interface StatisticsOverlayProps {
+export interface StatisticsContainerProps {
   toggleStatsOverlay(): void;
-  data: any;
+  calendarEvents: RoomsResponse | undefined;
+}
+
+export interface StatisticsPresenterProps {
+  toggleStatsOverlay(): void;
+  toggleStatsType(value: string): void;
+  statsType: string;
+  statsData: any;
 }

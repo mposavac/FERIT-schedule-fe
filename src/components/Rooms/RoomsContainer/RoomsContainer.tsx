@@ -1,10 +1,9 @@
-import moment from "moment";
-import React, { useState, useEffect } from "react";
-import { useLoading, useTranslation } from "../../../context";
+import React, { useState } from "react";
+import { useLoading } from "../../../context";
 import { useAxios } from "../../../hooks/useAxios";
 import { useForm } from "../../../hooks/useForm";
 import { RoomsForm } from "../../../interfaces/forms.type";
-import { RoomsResponse, TimeSlots } from "../../../interfaces/responses.type";
+import { RoomsResponse } from "../../../interfaces/responses.type";
 import RoomsPresenter from "../RoomsPresenter/RoomsPresenter";
 
 export default function RoomsContainer() {
@@ -19,8 +18,6 @@ export default function RoomsContainer() {
     `/rooms/availability/${values.date}/10`
   );
   const [isStatsOpen, setIsStatsOpen] = useState<boolean>(false);
-  const [statsData, setStatsData] = useState<any>();
-  const { t } = useTranslation();
 
   const handleFormChange = (e: any) => {
     if (e["building"] || e["room"]) {
@@ -40,44 +37,6 @@ export default function RoomsContainer() {
     setIsStatsOpen(!isStatsOpen);
   };
 
-  useEffect(() => {
-    const calculateStatsData = () => {
-      if (data && data.timeSlots) {
-        const calendarEvents: TimeSlots[] = [...data.timeSlots];
-        const timeWhenAvailable = 825;
-        const minutesArr: number[] = calendarEvents.map((value: TimeSlots) => {
-          const startTime = moment(value["pocetak"], "HH:mm");
-          const endTime = moment(value["kraj"], "HH:mm");
-          return endTime.diff(startTime, "minutes");
-        });
-        const busyHours = minutesArr.reduce(
-          (prev: number, curr: number) => prev + curr,
-          0
-        );
-        const roomUnvailable =
-          parseFloat((busyHours / timeWhenAvailable).toFixed(2)) * 100;
-        const roomAvailable =
-          parseFloat(
-            ((timeWhenAvailable - busyHours) / timeWhenAvailable).toFixed(2)
-          ) * 100;
-        const pieData = [
-          {
-            x: 1,
-            y: roomUnvailable,
-            label: `${t("chart.unavailable")} ${roomUnvailable}%`,
-          },
-          {
-            x: 2,
-            y: roomAvailable,
-            label: `${t("chart.available")} ${roomAvailable}%`,
-          },
-        ];
-        setStatsData(pieData);
-      }
-    };
-    calculateStatsData();
-  }, [data, t]);
-
   return (
     <RoomsPresenter
       values={values}
@@ -86,7 +45,6 @@ export default function RoomsContainer() {
       handleSearch={handleSearch}
       toggleStatsOverlay={handleStatsOverlay}
       isStatsOpen={isStatsOpen}
-      statsData={statsData}
     />
   );
 }

@@ -3,7 +3,7 @@ import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarC
 import RoomsFormPresenter from "./RoomsForm/RoomsForm";
 
 import "./RoomsPresenter.scss";
-import StatisticsOverlay from "./Statistics/StatisticsOverlay";
+import StatisticsContainer from "./Statistics/StatisticsContainer/StatisticsContainer";
 import { RoomsPresenterProps } from "./types";
 
 export default function RoomsPresenter({
@@ -13,7 +13,6 @@ export default function RoomsPresenter({
   handleSearch,
   toggleStatsOverlay,
   isStatsOpen,
-  statsData,
 }: RoomsPresenterProps) {
   //TODO: Implement real data
   const buildings = [
@@ -44,9 +43,9 @@ export default function RoomsPresenter({
       </div>
       <CalendarContainer calendarEvents={calendarEvents} />
       {isStatsOpen && (
-        <StatisticsOverlay
+        <StatisticsContainer
           toggleStatsOverlay={toggleStatsOverlay}
-          data={statsData}
+          calendarEvents={calendarEvents}
         />
       )}
     </div>

@@ -1,0 +1,48 @@
+@import "../../../styles/common";
+
+.toggle__button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  input {
+    display: none;
+  }
+  &__switch {
+    width: 75px;
+    height: 35px;
+    background: rgba($color-grey-dark, 0.25);
+    border-radius: 1000px;
+    position: relative;
+    margin: 0px 15px;
+    cursor: pointer;
+    border: 1px $color-ferit-red-light solid;
+    &::before {
+      content: "";
+      position: absolute;
+      background: $color-ferit-red-light;
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 100;
+      transition: 250ms;
+    }
+    &.option1::before {
+      transform: translate(20%, -50%);
+    }
+    &.option2::before {
+      transform: translate(170%, -50%);
+    }
+  }
+  label {
+    display: block;
+    cursor: pointer;
+    min-width: 100px;
+    &:first-of-type {
+      text-align: right;
+    }
+  }
+}
