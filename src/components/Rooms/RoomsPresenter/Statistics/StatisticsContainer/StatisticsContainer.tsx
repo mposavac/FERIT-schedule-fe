@@ -2,14 +2,18 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "../../../../../context";
 import { TimeSlots } from "../../../../../interfaces/responses.type";
-import { StatisticsContainerProps } from "../../types";
+import {
+  StaffTimeSlotData,
+  StatisticsContainerProps,
+  StatisticsData,
+} from "../../types";
 import StatisticsPresenter from "../StatisticsPresenter/StatisticsPresenter";
 
 export default function StatisticsContainer({
   toggleStatsOverlay,
   calendarEvents,
 }: StatisticsContainerProps) {
-  const [statsData, setStatsData] = useState<any>();
+  const [statsData, setStatsData] = useState<StatisticsData[]>([]);
   const [statsType, setStatsType] = useState<string>("availability");
   const { t } = useTranslation();
 
@@ -20,13 +24,25 @@ export default function StatisticsContainer({
       };
 
       const capitalizeWords = (str: string) => {
-        const arr = str.split(" ");
-        for (let i = 0; i < arr.length; i++) {
-          arr[i] =
-            arr[i].charAt(0).toUpperCase() +
-            arr[i].slice(1).toLocaleLowerCase();
-        }
-        return arr.join(" ");
+        if (str) {
+          let arr = str.split(" ");
+          for (let i = 0; i < arr.length; i++) {
+            let arrDashed = arr[i].split("-");
+            if (arrDashed.length > 1) {
+              for (let j = 0; j < arrDashed.length; j++) {
+                arrDashed[j] =
+                  arrDashed[j].charAt(0).toUpperCase() +
+                  arrDashed[j].slice(1).toLocaleLowerCase();
+              }
+              arr[i] = arrDashed.join("-");
+            } else {
+              arr[i] =
+                arr[i].charAt(0).toUpperCase() +
+                arr[i].slice(1).toLocaleLowerCase();
+            }
+          }
+          return arr.join(" ");
+        } else return t("unknown");
       };
 
       if (calendarEvents && calendarEvents.timeSlots) {
@@ -58,22 +74,40 @@ export default function StatisticsContainer({
           ];
           setStatsData(pieData);
         } else if (statsType === "staff") {
-          const staffByRoom = calendarEventsArr.map((value: TimeSlots) => {
-            const startTime = moment(value["pocetak"], "HH:mm");
-            const endTime = moment(value["kraj"], "HH:mm");
-            return {
-              nastavnik: capitalizeWords(value.nastavnik["#text"]),
-              slotDuration: endTime.diff(startTime, "minutes"),
-            };
-          });
+          const staffByRoom = Array.from(
+            calendarEventsArr
+              .map((value: TimeSlots) => {
+                const startTime = moment(value["pocetak"], "HH:mm");
+                const endTime = moment(value["kraj"], "HH:mm");
+                return {
+                  nastavnik: capitalizeWords(value.nastavnik["#text"]),
+                  slotDuration: Math.floor(endTime.diff(startTime, "minutes")),
+                };
+              })
+              .reduce(
+                (a, b) =>
+                  a.set(
+                    b.nastavnik,
+                    (a.get(b.nastavnik) || 0) + b.slotDuration
+                  ),
+                new Map()
+              )
+              .entries(),
+            (entry: any) => ({
+              nastavnik: entry[0],
+              slotDuration: entry[1],
+            })
+          );
 
-          const pieData = staffByRoom.map((value: any, i: number) => {
-            return {
-              x: i,
-              y: calcPrecentage(value.slotDuration, timeWhenAvailable),
-              label: value.nastavnik,
-            };
-          });
+          const pieData = staffByRoom.map(
+            (value: StaffTimeSlotData, i: number) => {
+              return {
+                x: i,
+                y: calcPrecentage(value.slotDuration, timeWhenAvailable),
+                label: value.nastavnik,
+              };
+            }
+          );
           setStatsData(pieData);
         }
       }

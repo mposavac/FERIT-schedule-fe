@@ -8,7 +8,7 @@ export default function RoomsFormPresenter({
   values,
   handleFormChange,
   handleSearch,
-  buildingOptions,
+  buildingsOptions,
   roomsOptions,
   isThereCalendarEvents,
   toggleStatsOverlay,
@@ -27,7 +27,7 @@ export default function RoomsFormPresenter({
             <InputSelect
               name="building"
               selectedOption={values.building}
-              optionsList={buildingOptions}
+              optionsList={buildingsOptions}
               onChange={handleFormChange}
             />
           </div>

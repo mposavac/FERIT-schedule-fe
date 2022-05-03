@@ -13,21 +13,9 @@ export default function RoomsPresenter({
   handleSearch,
   toggleStatsOverlay,
   isStatsOpen,
+  buildingsOptions,
+  roomsOptions,
 }: RoomsPresenterProps) {
-  //TODO: Implement real data
-  const buildings = [
-    { text: "Trpimirova", value: "0" },
-    { text: "Kampus", value: "1" },
-  ];
-
-  //TODO: Implement real data
-  const rooms = [
-    { text: "K2-1", value: "0" },
-    { text: "K2-2", value: "1" },
-    { text: "K2-3", value: "2" },
-    { text: "K2-4", value: "3" },
-  ];
-
   return (
     <div className="rooms">
       <div className="rooms__form__container">
@@ -35,8 +23,8 @@ export default function RoomsPresenter({
           values={values}
           handleFormChange={handleFormChange}
           handleSearch={handleSearch}
-          buildingOptions={buildings}
-          roomsOptions={rooms}
+          buildingsOptions={buildingsOptions}
+          roomsOptions={roomsOptions}
           isThereCalendarEvents={calendarEvents ? true : false}
           toggleStatsOverlay={toggleStatsOverlay}
         />

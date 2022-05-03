@@ -30,5 +30,6 @@
     "chart.available": "Slobodno",
     "chart.unavailable": "Zauzeto",
     "toggle.availability": "Zauzeće",
-    "toggle.staff": "Po nastavniku"
+    "toggle.staff": "Po nastavniku",
+    "unknown": "Nepoznato"
 }

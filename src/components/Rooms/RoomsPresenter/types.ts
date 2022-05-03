@@ -7,7 +7,7 @@ export interface RoomsFormPresenterProps {
   values: RoomsForm;
   handleFormChange(e: FormEvent<HTMLFormElement> | undefined): void;
   handleSearch(): void;
-  buildingOptions: InputSelectOption[];
+  buildingsOptions: InputSelectOption[];
   roomsOptions: InputSelectOption[];
   isThereCalendarEvents: boolean;
   toggleStatsOverlay(): void;
@@ -20,6 +20,8 @@ export interface RoomsPresenterProps {
   handleSearch(): void;
   toggleStatsOverlay(): void;
   isStatsOpen: boolean;
+  buildingsOptions: InputSelectOption[];
+  roomsOptions: InputSelectOption[];
 }
 
 export interface StatisticsContainerProps {
@@ -31,5 +33,16 @@ export interface StatisticsPresenterProps {
   toggleStatsOverlay(): void;
   toggleStatsType(value: string): void;
   statsType: string;
-  statsData: any;
+  statsData: StatisticsData[];
+}
+
+export interface StatisticsData {
+  x: number;
+  y: number;
+  label: string;
+}
+
+export interface StaffTimeSlotData {
+  nastavnik: string;
+  slotDuration: number;
 }

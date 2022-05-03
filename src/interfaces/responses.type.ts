@@ -18,3 +18,23 @@ export interface TimeSlots {
   smjer: any;
   vrstanastave: any;
 }
+
+export interface BuildingsOptionsResponse {
+  id: string;
+  naziv: string;
+  prostorije: RoomsInfo[];
+}
+
+export interface RoomsInfo {
+  "-id": string;
+  ime: string;
+  opis: string;
+  kapacitet: string;
+  covidkap: string;
+  zgrada: string;
+  tip: string;
+  zanastavu: string;
+  kvadratura: string;
+  napomena: any;
+  zaduzenja: any;
+}
