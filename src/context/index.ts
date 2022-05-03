@@ -7,6 +7,7 @@ import {
   useAuthDispatch,
   useLoading,
   useErrorMsg,
+  useTranslation,
 } from "./context";
 
 export {
@@ -20,4 +21,5 @@ export {
   useAuthDispatch,
   useLoading,
   useErrorMsg,
+  useTranslation,
 };

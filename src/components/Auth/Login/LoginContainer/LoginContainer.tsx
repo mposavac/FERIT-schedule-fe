@@ -6,6 +6,7 @@ import {
   useAuthDispatch,
   useErrorMsg,
   useLoading,
+  useTranslation,
 } from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
 import { LoginForm } from "../../../../interfaces/auth.types";
@@ -21,6 +22,7 @@ export default function LoginContainer() {
   const navigate = useNavigate();
   const { showLoader, hideLoader } = useLoading();
   const { showMsg } = useErrorMsg();
+  const { t } = useTranslation();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,8 +42,8 @@ export default function LoginContainer() {
     <AuthBackground
       additionalContent={
         <div className="auth__container__inner__additional__text">
-          <p>Don't have account yet?</p>
-          <Link to="/signup">Create an account.</Link>
+          <p>{t("login.account.create.text")}</p>
+          <Link to="/signup">{t("login.account.create.link")}</Link>
         </div>
       }
     >

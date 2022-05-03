@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "../../../../context";
 import { SignUpPresenterProps } from "./types";
 
 export default function SignUpPresenter({
@@ -6,11 +7,12 @@ export default function SignUpPresenter({
   handleChange,
   submit,
 }: SignUpPresenterProps) {
+  const { t } = useTranslation();
   return (
     <form onSubmit={submit}>
-      <h2>Sign Up</h2>
+      <h2>{t("signup")}</h2>
       <div className="inputs__container">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">{t("username")}</label>
         <input
           id="username"
           name="username"
@@ -18,7 +20,7 @@ export default function SignUpPresenter({
           value={values.username}
           onChange={handleChange}
         />
-        <label htmlFor="email">E-mail</label>
+        <label htmlFor="email">{t("e-mail")}</label>
         <input
           id="email"
           name="email"
@@ -26,7 +28,7 @@ export default function SignUpPresenter({
           value={values.email}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t("password")}</label>
         <input
           id="password"
           name="password"
@@ -35,7 +37,7 @@ export default function SignUpPresenter({
           onChange={handleChange}
         />
       </div>
-      <button>Create an account</button>
+      <button>{t("signup.submit.button")}</button>
     </form>
   );
 }

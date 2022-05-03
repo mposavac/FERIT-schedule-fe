@@ -1,0 +1,40 @@
+@import "../../../../../styles/common";
+
+.statistics__overlay__container {
+  z-index: 1000;
+  position: absolute;
+  width: 85%;
+  height: 85vh;
+  background: lightgray;
+  overflow: hidden; // ili scroll - po potrebi
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInBottom 300ms ease-in-out;
+  &__close__container {
+    position: absolute;
+    width: 50px;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    img {
+      cursor: pointer;
+    }
+  }
+  &__pie__container {
+    position: relative;
+    width: 80%;
+    height: 80%;
+  }
+  @keyframes fadeInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}

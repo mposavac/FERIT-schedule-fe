@@ -1,0 +1,50 @@
+@import "../../../../styles/common";
+
+.input__select__container {
+  cursor: pointer;
+  position: relative;
+  margin: 5px;
+  width: 80%;
+  transition: 150ms;
+  &__selected {
+    width: 100%;
+    min-width: 200px;
+    height: 30px;
+    padding: 0 10px;
+    background: #fff;
+    border: 1px $color-grey-light solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    img {
+      transition: 300ms;
+      transition: 300ms;
+      height: 100%;
+      max-width: 20px;
+      user-select: none;
+      &.arrow-down {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  ul.select__options {
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: $color-grey-light;
+    list-style-type: none;
+    user-select: none;
+    li {
+      padding: 5px 0;
+      &:hover {
+        color: $color-ferit-blue;
+      }
+    }
+  }
+  &.disabled {
+    opacity: 0.4;
+  }
+}
