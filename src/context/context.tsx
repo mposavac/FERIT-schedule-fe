@@ -11,6 +11,7 @@ import {
   AuthStateInterface,
   ErrorContextInterface,
   LoadingContextInterface,
+  SettingsContextInterface,
   TranslationContextInterface,
 } from "./types";
 import * as languages from "../languages";
@@ -41,6 +42,13 @@ const TranslationContext = createContext({
   t: (key: string) => key,
 });
 
+const SettingsContext = createContext({
+  mode: "light",
+  language: "hr",
+  toggleMode: () => {},
+  changeLanguage: (lang: string) => {},
+});
+
 export const useAuthState = (): AuthStateInterface => {
   const context = useContext(AuthStateContext);
   if (!context) throw new Error("There is no AuthStateContext.");
@@ -67,6 +75,12 @@ export const useErrorMsg = (): ErrorContextInterface => {
 export const useTranslation = (): TranslationContextInterface => {
   const context = useContext(TranslationContext);
   if (!context) throw new Error("There is no TranslationContext.");
+  return context;
+};
+
+export const useSettings = (): SettingsContextInterface => {
+  const context = useContext(SettingsContext);
+  if (!context) throw new Error("There is no SettingsContext.");
   return context;
 };
 
@@ -121,14 +135,30 @@ export const ErrorProvider = ({ children }: any) => {
   );
 };
 
-export const TranslationProvider = ({ children }: any): any => {
-  const t = (key: string): string => {
-    return (languages as any)["hr"][key] || key;
+export const SettingsProvider = ({ children }: any): any => {
+  const initState = { mode: "light", language: "hr" };
+  const [settings, setSettings] = useLocalStorage("settings", initState);
+
+  const toggleMode = () => {
+    let mode = settings.mode === "light" ? "dark" : "light";
+    setSettings({ ...settings, mode });
+  };
+
+  const changeLanguage = (lang: string) => {
+    setSettings({ ...settings, language: lang });
+  };
+
+  let t = (key: string): string => {
+    return (languages as any)[settings.language || "hr"][key] || key;
   };
 
   return (
-    <TranslationContext.Provider value={{ t }}>
-      {children}
-    </TranslationContext.Provider>
+    <SettingsContext.Provider
+      value={{ ...settings, toggleMode, changeLanguage }}
+    >
+      <TranslationContext.Provider value={{ t }}>
+        {children}
+      </TranslationContext.Provider>
+    </SettingsContext.Provider>
   );
 };

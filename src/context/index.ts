@@ -3,11 +3,13 @@ import {
   AuthProvider,
   LoadingProvider,
   ErrorProvider,
+  SettingsProvider,
   useAuthState,
   useAuthDispatch,
   useLoading,
   useErrorMsg,
   useTranslation,
+  useSettings,
 } from "./context";
 
 export {
@@ -17,9 +19,11 @@ export {
   AuthProvider,
   LoadingProvider,
   ErrorProvider,
+  SettingsProvider,
   useAuthState,
   useAuthDispatch,
   useLoading,
   useErrorMsg,
   useTranslation,
+  useSettings,
 };

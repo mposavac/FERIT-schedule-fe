@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { logoutUser, useAuthDispatch, useAuthState } from "../../../context";
+import {
+  logoutUser,
+  useAuthDispatch,
+  useAuthState,
+  useSettings,
+} from "../../../context";
 import NavigationPresenter from "../NavigationPresenter/NavigationPresenter";
 
 export default function NavigationContainer() {
@@ -9,6 +14,7 @@ export default function NavigationContainer() {
   const dispatch = useAuthDispatch();
   const [shouldRender, setShouldRender] = useState(false);
   let user = useAuthState();
+  const { mode } = useSettings();
 
   useEffect(() => {
     if (pathname !== "/login" && pathname !== "/signup") setShouldRender(true);
@@ -20,7 +26,11 @@ export default function NavigationContainer() {
   };
 
   return shouldRender ? (
-    <NavigationPresenter handleLogout={logout} username={user.username} />
+    <NavigationPresenter
+      handleLogout={logout}
+      username={user.username}
+      mode={mode}
+    />
   ) : (
     <></>
   );
