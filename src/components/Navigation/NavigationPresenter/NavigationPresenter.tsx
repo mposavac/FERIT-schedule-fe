@@ -3,19 +3,24 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "../../../context";
 
-import { feritLogo, profilePlaceholder } from "../../../styles/assets/images";
+import {
+  feritLogo,
+  feritLogoBijeli,
+  profilePlaceholder,
+} from "../../../styles/assets/images";
 import "./NavigationPresenter.scss";
 import { NavigationPresenterProps } from "./types";
 
 export default function NavigationPresenter({
   handleLogout,
   username,
+  mode,
 }: NavigationPresenterProps) {
   const { t } = useTranslation();
   return (
     <div className="navigation__container">
       <div className="navigation__container__left">
-        <img src={feritLogo} alt="" />
+        <img src={mode === "light" ? feritLogo : feritLogoBijeli} alt="" />
         <span />
         <div className="link__container">
           <NavLink to="prostorije">{t("navigation.rooms")}</NavLink>
@@ -35,7 +40,7 @@ export default function NavigationPresenter({
           <img src={profilePlaceholder} alt="" />
           <p>{username}</p>
           <div className="dropdown__menu__content">
-            <Link to="/">{t("settings")}</Link>
+            <Link to="/postavke">{t("settings")}</Link>
             <p onClick={handleLogout}>{t("logout")}</p>
           </div>
         </div>

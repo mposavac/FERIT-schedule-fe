@@ -19,6 +19,13 @@ export interface TranslationContextInterface {
   t: (key: string) => string;
 }
 
+export interface SettingsContextInterface {
+  mode: string;
+  language: string;
+  toggleMode: () => void;
+  changeLanguage: (lang: string) => void;
+}
+
 export interface AuthStateInterface {
   id: string | undefined;
   username: string | undefined;

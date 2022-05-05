@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import "./common";
 
 * {
@@ -5,11 +6,23 @@
   padding: 0;
   outline: none;
   box-sizing: border-box;
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 #root {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+}
+
+body {
+  transition: 250ms;
+  &.theme-dark {
+    background: $color-grey-dark;
+    color: #fff;
+  }
+  &.theme-light {
+    background: #fff;
+    color: $color-grey-dark;
+  }
 }

@@ -1,0 +1,77 @@
+@import "../../../styles/common";
+
+.radio-button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    display: none;
+    & + div {
+      display: inline-block;
+      border-radius: 50%;
+      position: relative;
+      width: 3vw;
+      height: 3vw;
+      max-width: 20px;
+      max-height: 20px;
+      margin-right: 0.5em;
+      cursor: pointer;
+      svg {
+        fill: none;
+        stroke-width: 3.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        width: 3vw;
+        height: 3vw;
+        max-width: 20px;
+        max-height: 20px;
+        display: block;
+        position: absolute;
+        left: -3px;
+        top: -3px;
+        right: -3px;
+        bottom: -3px;
+        z-index: 1;
+        stroke-dashoffset: 162.6 - 38;
+        stroke-dasharray: 0 162.6 133 (162.6 - 133);
+        transition: all 0.4s ease 0s;
+      }
+    }
+    &:checked + div {
+      svg {
+        stroke-dashoffset: 162.6;
+        stroke-dasharray: 0 162.6 28 (162.6 - 28);
+        transition: all 0.4s ease;
+      }
+    }
+  }
+}
+
+.theme-light .radio-button__container input {
+  & + div {
+    border: 3px solid rgba($color-grey-dark, 0.2);
+    svg {
+      stroke: $color-grey-dark;
+    }
+  }
+  &:checked + div {
+    border: 3px solid rgba(#fff, 0.2);
+    svg {
+      stroke: #fff;
+    }
+  }
+}
+.theme-dark .radio-button__container input {
+  & + div {
+    border: 3px solid rgba(#fff, 0.2);
+    svg {
+      stroke: #fff;
+    }
+  }
+  &:checked + div {
+    border: 3px solid rgba(#fff, 0.2);
+    svg {
+      stroke: #fff;
+    }
+  }
+}

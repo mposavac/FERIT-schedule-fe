@@ -1,0 +1,94 @@
+@import "../../../styles/common";
+
+.settings__page {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - $nav-height - $footer-height);
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: $color-grey-light 0px 0px 10px 5px;
+    width: 45%;
+    min-width: 505px;
+    padding: 20px 0;
+    border-radius: 10px;
+    &__section {
+      position: relative;
+      width: 500px;
+      min-height: 120px;
+      margin: 40px 0;
+      h3 {
+        margin: 5px 0 0 5px;
+        text-align: left;
+        width: 100%;
+      }
+      &__field {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: calc(120px - 25px);
+        &__lang {
+          width: fit-content;
+          height: fit-content;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-radius: 7px;
+          overflow: hidden;
+          border: 1px $color-grey-light solid;
+          &__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 250px;
+            height: 50px;
+            cursor: pointer;
+            transition: 250ms;
+            &:not(:last-child) {
+              border-bottom: 1px $color-grey-light solid;
+            }
+            div {
+              height: 100%;
+              display: flex;
+              img {
+                width: 30px;
+                margin-right: 10px;
+              }
+            }
+            &.selected {
+              background: $color-ferit-red-light;
+              color: #fff;
+            }
+            p {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.theme-light .settings__page__container {
+  box-shadow: $color-grey-light 0px 0px 10px 5px;
+  transition: box-shadow 700ms;
+  &__section {
+    box-shadow: $color-grey-light 0px 0px 5px 0px;
+    transition: box-shadow 700ms;
+  }
+}
+.theme-dark .settings__page__container {
+  box-shadow: rgba(#000, 0.05) 0px 0px 10px 5px;
+  transition: box-shadow 100ms;
+  &__section {
+    box-shadow: rgba(#000, 0.1) 0px 0px 5px 0px;
+    transition: box-shadow 100ms;
+  }
+}
