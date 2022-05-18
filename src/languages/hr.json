@@ -43,5 +43,8 @@
     "err.required.username": "Korisničko ime je obavezno!",
     "err.pattern.username": "Korisničko ime ne smije sadržavati razmak!",
     "err.required.allFields": "Sva polja su obavezna!",
+    "err.required.date":"Datum je obavezan!",
+    "err.required.building":"Odaberite zgradu!",
+    "err.required.room": "Odaberite prostoriju!",
     "unknown": "Nepoznato"
 }

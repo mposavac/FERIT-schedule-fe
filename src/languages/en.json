@@ -43,5 +43,8 @@
     "err.required.username": "Username is required!",
     "err.pattern.username": "Username must not contain any spaces!",
     "err.required.allFields": "All fields are required!",
+    "err.required.date":"Date is required!",
+    "err.required.building":"Please select the building!",
+    "err.required.room": "Please select the room!",
     "unknown": "Unknown"
 }

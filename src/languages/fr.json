@@ -43,5 +43,8 @@
     "err.required.username": "Nom d'utilisateur est nécessaire!",
     "err.pattern.username": "Le nom d'utilisateur ne doit pas contenir d'espaces!",
     "err.required.allFields": "Tous les champs sont requis!",
+    "err.required.date":"La date est requise!",
+    "err.required.building":"Veuillez sélectionner le bâtiment!",
+    "err.required.room": "Veuillez sélectionner la salle!",
     "unknown": "Inconnue"
 }

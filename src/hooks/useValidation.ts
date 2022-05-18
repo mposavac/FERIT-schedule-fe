@@ -6,12 +6,14 @@ export const useValidation = (validationSchema: any) => {
 
   const validate = <S>(values: S) =>
     new Promise((resolve, reject) => {
-      if (validationSchema?.schema_type === "auth") {
-        const err = validateAuth(values);
-        if (err) {
-          showMsg(t(err));
-          reject("Not Valid");
-        }
+      let err;
+      if (validationSchema?.schema_type === "auth") err = validateAuth(values);
+      else if (validationSchema?.schema_type === "search")
+        err = validateSearch(values);
+
+      if (err) {
+        showMsg(t(err));
+        reject("Not Valid");
       }
       resolve("Valid");
     });
@@ -31,6 +33,19 @@ export const useValidation = (validationSchema: any) => {
       if (!regex.test(value)) return validationSchema?.[key]?.pattern?.err;
       if (validationSchema?.[key]?.isLength?.minLength > value.length)
         return validationSchema?.[key]?.isLength?.err;
+    }
+    return "";
+  };
+
+  const validateSearch = <S>(values: S): string => {
+    let keys = Object.keys(values);
+    for (const key of keys) {
+      const value =
+        (values as any)?.[key]?.value !== undefined
+          ? (values as any)?.[key]?.value
+          : (values as any)?.[key];
+      if (validationSchema?.[key]?.isRequired && !value)
+        return validationSchema?.[key]?.isRequired?.err;
     }
     return "";
   };

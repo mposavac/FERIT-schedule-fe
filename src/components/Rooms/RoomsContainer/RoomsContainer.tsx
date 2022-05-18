@@ -8,16 +8,20 @@ import {
   RoomsInfo,
   RoomsResponse,
 } from "../../../interfaces/responses.type";
+import { searchSchema } from "../../../schemas";
 import { InputSelectOption } from "../../shared/InputSelect/types";
 import RoomsPresenter from "../RoomsPresenter/RoomsPresenter";
 
 export default function RoomsContainer() {
   const today = new Date().toISOString();
-  const [values, handleChange] = useForm<RoomsForm>({
-    date: today.substring(0, today.indexOf("T")),
-    building: { value: "", text: "" },
-    room: { value: "", text: "" },
-  });
+  const [values, handleChange, validateForm] = useForm<RoomsForm>(
+    {
+      date: today.substring(0, today.indexOf("T")),
+      building: { value: "", text: "" },
+      room: { value: "", text: "" },
+    },
+    searchSchema
+  );
   const { showLoader, hideLoader } = useLoading();
   const [data, fetchData] = useAxios<RoomsResponse>(
     `/rooms/availability/${values.date}/${values.room.value}`
@@ -54,9 +58,13 @@ export default function RoomsContainer() {
 
   const handleSearch = () => {
     showLoader();
-    fetchData().then(() => {
-      hideLoader();
-    });
+    validateForm()
+      .then(() =>
+        fetchData().then(() => {
+          hideLoader();
+        })
+      )
+      .catch(() => hideLoader());
   };
 
   const handleStatsOverlay = () => {
