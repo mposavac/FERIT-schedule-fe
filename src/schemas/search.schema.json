@@ -1,0 +1,12 @@
+{
+    "schema_type": "search",
+    "date": {
+        "isRequired": { "err": "err.required.date" }
+    },
+    "building": {
+        "isRequired": { "err": "err.required.building" }
+    },
+    "room":{
+        "isRequired": { "err": "err.required.room" }
+    }
+}

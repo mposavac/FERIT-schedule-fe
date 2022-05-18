@@ -36,5 +36,15 @@
     "settings.user":"User",
     "settings.mode": "Mode",
     "settings.language": "Language",
+    "err.required.email": "E-mail field is required!",
+    "err.pattern.email":"Something is wrong with the E-mail!",
+    "err.required.password": "Password is required!",
+    "err.length.password": "Password must contain at least 6 characters!",
+    "err.required.username": "Username is required!",
+    "err.pattern.username": "Username must not contain any spaces!",
+    "err.required.allFields": "All fields are required!",
+    "err.required.date":"Date is required!",
+    "err.required.building":"Please select the building!",
+    "err.required.room": "Please select the room!",
     "unknown": "Unknown"
 }

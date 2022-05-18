@@ -1,0 +1,21 @@
+{
+    "schema_type": "auth",
+    "email": {
+        "isRequired": { "err": "err.required.email" },
+        "pattern": {
+          "regex": "^[\\w\\-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+          "err": "err.pattern.email"
+        }
+    },
+    "password": {
+        "isRequired": { "err": "err.required.password" },
+        "isLength": { "minLength": 6, "err": "err.length.password" }
+    },
+    "username":{
+        "isRequired": { "err": "err.required.password" },
+        "pattern": {
+            "regex": "^\\S*$",
+            "err": "err.pattern.username"
+        }
+    }
+}

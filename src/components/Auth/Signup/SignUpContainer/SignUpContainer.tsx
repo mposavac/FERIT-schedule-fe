@@ -9,15 +9,19 @@ import { useLoading, useErrorMsg } from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
 
 import { SignUpForm } from "../../../../interfaces/auth.types";
+import { authSchema } from "../../../../schemas";
 import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
 import SignUpPresenter from "../SignUpPresenter/SignUpPresenter";
 
 export default function SignUpContainer() {
-  const [values, handleChange] = useForm<SignUpForm>({
-    username: "",
-    email: "",
-    password: "",
-  });
+  const [values, handleChange, validateForm] = useForm<SignUpForm>(
+    {
+      username: "",
+      email: "",
+      password: "",
+    },
+    authSchema
+  );
   const dispatch = useAuthDispatch();
   const navigate = useNavigate();
   const { showLoader, hideLoader } = useLoading();
@@ -27,15 +31,19 @@ export default function SignUpContainer() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     showLoader();
-    signUpUser(dispatch, values)
-      .then(() => {
-        hideLoader();
-        navigate("/");
-      })
-      .catch((e) => {
-        hideLoader();
-        showMsg(e.message);
-      });
+    validateForm()
+      .then(() =>
+        signUpUser(dispatch, values)
+          .then(() => {
+            hideLoader();
+            navigate("/");
+          })
+          .catch((e) => {
+            hideLoader();
+            showMsg(e.message);
+          })
+      )
+      .catch(() => hideLoader());
   };
   return (
     <AuthBackground
