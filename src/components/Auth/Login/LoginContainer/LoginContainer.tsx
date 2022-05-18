@@ -10,32 +10,40 @@ import {
 } from "../../../../context";
 import { useForm } from "../../../../hooks/useForm";
 import { LoginForm } from "../../../../interfaces/auth.types";
+import { authSchema } from "../../../../schemas/";
 import AuthBackground from "../../Shared/AuthBackground/AuthBackground";
 import LoginPresenter from "../LoginPresenter/LoginPresenter";
 
 export default function LoginContainer() {
-  const [values, handleChange] = useForm<LoginForm>({
-    email: "",
-    password: "",
-  });
+  const [values, handleChange, validateForm] = useForm<LoginForm>(
+    {
+      email: "",
+      password: "",
+    },
+    authSchema
+  );
   const dispatch = useAuthDispatch();
   const navigate = useNavigate();
   const { showLoader, hideLoader } = useLoading();
   const { showMsg } = useErrorMsg();
   const { t } = useTranslation();
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     showLoader();
-    loginUser(dispatch, values)
-      .then(() => {
-        hideLoader();
-        navigate("/");
-      })
-      .catch((e) => {
-        hideLoader();
-        showMsg(e.message);
-      });
+    validateForm()
+      .then(() =>
+        loginUser(dispatch, values)
+          .then(() => {
+            hideLoader();
+            navigate("/");
+          })
+          .catch((e) => {
+            hideLoader();
+            showMsg(e.message);
+          })
+      )
+      .catch(() => hideLoader());
   };
 
   return (

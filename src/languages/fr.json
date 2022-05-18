@@ -36,5 +36,12 @@
     "settings.user":"Utilisateur",
     "settings.mode": "Mode",
     "settings.language": "Langue",
+    "err.required.email": "E-mail est requis!",
+    "err.pattern.email":"Quelque chose ne va pas avec l'e-mail!",
+    "err.required.password": "Le Mot de passe est requis!",
+    "err.length.password": "Le mot de passe doit contenir au moins 6 caractères!",
+    "err.required.username": "Nom d'utilisateur est nécessaire!",
+    "err.pattern.username": "Le nom d'utilisateur ne doit pas contenir d'espaces!",
+    "err.required.allFields": "Tous les champs sont requis!",
     "unknown": "Inconnue"
 }

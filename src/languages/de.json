@@ -36,5 +36,12 @@
     "settings.user":"Benutzer",
     "settings.mode": "Modus",
     "settings.language": "Sprache",
+    "err.required.email": "E-Mail ist erforderlich!",
+    "err.pattern.email":"Irgendetwas stimmt mit der E-mail nicht!",
+    "err.required.password": "Passwort wird benötigt!",
+    "err.length.password": "Das Passwort muss mindestens 6 Zeichen enthalten!",
+    "err.required.username": "Benutzername wird benötigt!",
+    "err.pattern.username": "Der Benutzername darf keine Leerzeichen enthalten!",
+    "err.required.allFields": "Alle Felder sind erforderlich!",
     "unknown": "Unbekannt"
 }

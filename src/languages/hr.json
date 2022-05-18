@@ -36,5 +36,12 @@
     "settings.user":"Korisnik",
     "settings.mode": "Način rada",
     "settings.language": "Jezik",
+    "err.required.email": "E-mail polje je obavezno!",
+    "err.pattern.email":"Provjerite E-mail!",
+    "err.required.password": "Lozinka je obavezna!",
+    "err.length.password": "Lozinka mora sadržavati minimalno 6 znakova!",
+    "err.required.username": "Korisničko ime je obavezno!",
+    "err.pattern.username": "Korisničko ime ne smije sadržavati razmak!",
+    "err.required.allFields": "Sva polja su obavezna!",
     "unknown": "Nepoznato"
 }
