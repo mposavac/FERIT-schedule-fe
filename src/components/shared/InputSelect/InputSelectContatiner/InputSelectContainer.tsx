@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputSelectPresenter from "../InputSelectPresenter/InputSelectPresenter";
-import { InputSelectContainerProps } from "../types";
+import { InputSelectContainerProps, InputSelectOption } from "../types";
 
 const InputSelectContainer = ({
   name,
@@ -10,6 +10,7 @@ const InputSelectContainer = ({
   disabled,
 }: InputSelectContainerProps) => {
   const [toggleOpen, setToggleOpen] = useState(false);
+  const [options, setOptions] = useState<InputSelectOption[]>([]);
 
   const handleOptionClick = (e: any) => {
     const option = JSON.parse(e.target.getAttribute("data-name"));
@@ -21,9 +22,13 @@ const InputSelectContainer = ({
     if (!disabled) setToggleOpen(!toggleOpen);
   };
 
+  useEffect(() => {
+    setOptions(optionsList.sort((a, b) => a.text.localeCompare(b.text)));
+  }, [optionsList]);
+
   return (
     <InputSelectPresenter
-      optionsList={optionsList}
+      optionsList={options}
       selectedOption={selectedOption}
       toggleOpen={toggleOpen}
       handleOptionClick={handleOptionClick}

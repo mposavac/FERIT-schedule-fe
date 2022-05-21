@@ -20,6 +20,11 @@ export const AuthReducer = (state = initState, action: Actions) => {
         ...initState,
         ...action.payload,
       };
+    case "REFRESH_SUCCESS":
+      return {
+        ...initState,
+        ...action.payload,
+      };
     case "LOGOUT_SUCCESS":
       return {
         ...initState,

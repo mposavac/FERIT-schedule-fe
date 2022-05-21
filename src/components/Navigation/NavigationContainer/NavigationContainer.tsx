@@ -22,7 +22,8 @@ export default function NavigationContainer() {
   }, [pathname]);
 
   const logout = () => {
-    logoutUser(dispatch).then(() => navigate("/login"));
+    const { id, access_token } = user;
+    logoutUser(dispatch, { id, access_token }).then(() => navigate("/login"));
   };
 
   return shouldRender ? (
