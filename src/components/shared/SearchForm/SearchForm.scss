@@ -10,6 +10,7 @@
     min-height: 500px;
     background: $color-grey-light;
     border-radius: 7px;
+    transition: 250ms;
 
     &__field {
       width: 100%;
@@ -36,4 +37,9 @@
       cursor: pointer;
     }
   }
+}
+
+.theme-dark .search__form__container__content {
+  background: $color-grey-dark;
+  box-shadow: rgba(#000, 0.05) 0px 0px 10px 5px;
 }

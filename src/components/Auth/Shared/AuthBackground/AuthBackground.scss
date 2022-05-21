@@ -103,3 +103,7 @@
     transition: 300ms;
   }
 }
+
+.theme-dark .auth__container__inner form {
+  background: rgba($color-grey-light, 0.15);
+}

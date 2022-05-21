@@ -1,11 +1,12 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuthState } from "../context";
+import { useRefreshToken } from "./useRefreshToken";
 
 export const useAxios = <S>(url: string, fetchOnLoad?: boolean) => {
   const [data, setData] = useState<S>();
   const [urlState, setUrlState] = useState("");
   const { access_token } = useAuthState();
+  const [axios] = useRefreshToken();
 
   useEffect(() => {
     setUrlState(url);
@@ -13,15 +14,17 @@ export const useAxios = <S>(url: string, fetchOnLoad?: boolean) => {
 
   const fetchData = async (url?: string) => {
     await axios
-      .get(process.env.REACT_APP_BACKEND_URL + (url || urlState), {
+      .get(url || urlState, {
         headers: { Authorization: `Bearer ${access_token}` },
       })
       .then((res) => {
         setData(res.data);
       })
       .catch((e) => {
-        if (e.response && e.response.data)
-          throw new Error(e.response.data.error);
+        if (e?.response && e?.response?.data) {
+          throw new Error(e?.response?.data?.error);
+        }
+        throw new Error(e);
       });
   };
 

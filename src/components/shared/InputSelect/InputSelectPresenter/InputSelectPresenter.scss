@@ -12,6 +12,7 @@
     height: 30px;
     padding: 0 10px;
     background: #fff;
+    color: #000;
     border: 1px $color-grey-light solid;
     display: flex;
     justify-content: space-between;
@@ -32,14 +33,18 @@
     z-index: 100;
     position: absolute;
     width: 100%;
-    padding: 10px;
     margin-top: 5px;
-    background: $color-grey-light;
+    background: #fff;
+    color: $color-grey-dark;
     list-style-type: none;
     user-select: none;
+    max-height: 275px;
+    overflow-y: auto;
     li {
-      padding: 5px 0;
+      padding: 10px;
+      transition: 250ms;
       &:hover {
+        background: rgba($color-grey-light, 0.75);
         color: $color-ferit-blue;
       }
     }

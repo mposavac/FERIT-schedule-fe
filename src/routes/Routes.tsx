@@ -12,10 +12,13 @@ import RoomsContainer from "../components/Rooms/RoomsContainer/RoomsContainer";
 import SettingsContainer from "../components/Settings/SettingsContainer/SettingsContainer";
 import Footer from "../components/shared/Footer/Footer";
 import { useSettings } from "../context";
+import { useRefreshToken } from "../hooks/useRefreshToken";
 import PrivateRoute from "./PrivateRoute";
 
 const Routes = () => {
   const { mode } = useSettings();
+  const [axios] = useRefreshToken();
+
   useEffect(() => {
     if (mode === "light") document.body.classList.add("theme-light");
     else document.body.classList.add("theme-dark");

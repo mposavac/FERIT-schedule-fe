@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   min-width: 400px;
+  color: $color-grey-dark;
   &__hours {
     display: flex;
     flex-direction: column;
@@ -20,6 +21,9 @@
       margin: 6.25px 0;
       p {
         padding: 4px 0;
+      }
+      &:last-child {
+        margin: 6.25px 0 0 0;
       }
     }
   }

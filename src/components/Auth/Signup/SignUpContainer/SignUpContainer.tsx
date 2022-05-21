@@ -40,7 +40,7 @@ export default function SignUpContainer() {
           })
           .catch((e) => {
             hideLoader();
-            showMsg(e.message);
+            showMsg(e?.message);
           })
       )
       .catch(() => hideLoader());
