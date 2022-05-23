@@ -1,6 +1,6 @@
 import React from "react";
 import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
-import RoomsFormPresenter from "./RoomsForm/RoomsForm";
+import RoomsForm from "./RoomsForm/RoomsForm";
 
 import "./RoomsPresenter.scss";
 import StatisticsContainer from "./Statistics/StatisticsContainer/StatisticsContainer";
@@ -19,7 +19,7 @@ export default function RoomsPresenter({
   return (
     <div className="rooms">
       <div className="rooms__form__container">
-        <RoomsFormPresenter
+        <RoomsForm
           values={values}
           handleFormChange={handleFormChange}
           handleSearch={handleSearch}

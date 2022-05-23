@@ -1,7 +1,8 @@
-import { RoomsResponse } from "../../../interfaces/responses.type";
+import { CalendarEventsResponse } from "../../../interfaces/responses.type";
 
 export interface CalendarContainerProps {
-  calendarEvents: RoomsResponse | undefined;
+  calendarEvents: CalendarEventsResponse | undefined;
+  displayRoom?: boolean;
 }
 
 export interface CalendarpresenterProps {

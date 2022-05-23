@@ -5,6 +5,7 @@ import { CalendarContainerProps, CalendarEvent } from "../types";
 
 export default function CalendarContainer({
   calendarEvents,
+  displayRoom,
 }: CalendarContainerProps) {
   const [events, setEvents] = useState<CalendarEvent[]>();
 
@@ -25,7 +26,6 @@ export default function CalendarContainer({
     }
   };
   useEffect(() => {
-    //console.log({ calendarEvents });
     if (calendarEvents && calendarEvents.timeSlots) {
       const dayStart = moment("08:00", "HH:mm");
       const events = calendarEvents.timeSlots.map((event: any) => {
@@ -36,7 +36,10 @@ export default function CalendarContainer({
         }px`;
         const height = `${(endTime.diff(startTime, "minutes") / 15) * 12.5}px`;
         return {
-          title: event.predmet["#text"],
+          title:
+            displayRoom && event?.prostorija["#text"]
+              ? event.predmet["#text"] + " (" + event?.prostorija["#text"] + ")"
+              : event.predmet["#text"],
           staff: event.nastavnik["#text"],
           timeInfo: startTime.format("HH:mm") + " - " + endTime.format("HH:mm"),
           classTypeColor: getClassTypeColor(event.vrstanastave["@tip"]),
@@ -46,7 +49,7 @@ export default function CalendarContainer({
       });
       setEvents(events);
     }
-  }, [calendarEvents]);
+  }, [calendarEvents, displayRoom]);
 
   return calendarEvents && events ? (
     <CalendarPresenter

@@ -28,7 +28,7 @@ export default function CalendarPresenter({
       }}
     >
       <p className="title">{event.title}</p>
-      <p className="staff">{event.staff}</p>
+      <p className="employee">{event.staff}</p>
       <p className="time">{event.timeInfo}</p>
     </div>
   );

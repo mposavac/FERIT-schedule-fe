@@ -11,6 +11,7 @@ import NavigationContainer from "../components/Navigation/NavigationContainer/Na
 import RoomsContainer from "../components/Rooms/RoomsContainer/RoomsContainer";
 import SettingsContainer from "../components/Settings/SettingsContainer/SettingsContainer";
 import Footer from "../components/shared/Footer/Footer";
+import StaffContainer from "../components/Staff/StaffContainer/StaffContainer";
 import { useSettings } from "../context";
 import { useRefreshToken } from "../hooks/useRefreshToken";
 import PrivateRoute from "./PrivateRoute";
@@ -36,7 +37,6 @@ const Routes = () => {
         <Route path="/login" element={<LoginContainer />} />
         <Route path="/signup" element={<SignUpContainer />} />
         <Route path="/" element={<PrivateRoute></PrivateRoute>} />
-        <Route path="/kalendar" element={<PrivateRoute></PrivateRoute>} />
         <Route
           path="/prostorije"
           element={
@@ -53,7 +53,15 @@ const Routes = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/djelatnici" element={<PrivateRoute></PrivateRoute>} />
+        <Route
+          path="/djelatnici"
+          element={
+            <PrivateRoute>
+              <StaffContainer />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/kalendar" element={<PrivateRoute></PrivateRoute>} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routing>
       <Footer />
