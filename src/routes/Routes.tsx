@@ -9,6 +9,7 @@ import LoginContainer from "../components/Auth/Login/LoginContainer/LoginContain
 import SignUpContainer from "../components/Auth/Signup/SignUpContainer/SignUpContainer";
 import NavigationContainer from "../components/Navigation/NavigationContainer/NavigationContainer";
 import RoomsContainer from "../components/Rooms/RoomsContainer/RoomsContainer";
+import SchedulerContainer from "../components/Scheduler/SchedulerContainer/SchedulerContainer";
 import SettingsContainer from "../components/Settings/SettingsContainer/SettingsContainer";
 import Footer from "../components/shared/Footer/Footer";
 import StaffContainer from "../components/Staff/StaffContainer/StaffContainer";
@@ -61,7 +62,14 @@ const Routes = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/kalendar" element={<PrivateRoute></PrivateRoute>} />
+        <Route
+          path="/kalendar"
+          element={
+            <PrivateRoute>
+              <SchedulerContainer />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routing>
       <Footer />

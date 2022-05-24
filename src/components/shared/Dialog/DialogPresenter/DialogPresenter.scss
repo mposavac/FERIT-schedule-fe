@@ -41,7 +41,6 @@
         transition: 250ms;
         cursor: pointer;
         user-select: none;
-        pointer-events: none;
         &:hover {
           transform: rotate(180deg);
         }
