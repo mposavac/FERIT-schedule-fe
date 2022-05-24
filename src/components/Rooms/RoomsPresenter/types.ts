@@ -24,16 +24,8 @@ export interface RoomsPresenterProps {
   roomsOptions: InputSelectOption[];
 }
 
-export interface StatisticsContainerProps {
-  toggleStatsOverlay(): void;
+export interface StatisticsProps {
   calendarEvents: CalendarEventsResponse | undefined;
-}
-
-export interface StatisticsPresenterProps {
-  toggleStatsOverlay(): void;
-  toggleStatsType(value: string): void;
-  statsType: string;
-  statsData: StatisticsData[];
 }
 
 export interface StatisticsData {

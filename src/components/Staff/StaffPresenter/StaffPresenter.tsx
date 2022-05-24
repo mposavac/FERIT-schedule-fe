@@ -3,7 +3,8 @@ import StaffForm from "./StaffForm/StaffForm";
 import { StaffPresenterProps } from "./types";
 import "./StaffPresenter.scss";
 import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
-import StaffInfoOverlay from "./StaffInfoOverlay/StaffInfoOverlay";
+import DialogContainer from "../../shared/Dialog/DialogContainer/DialogContainer";
+import { useTranslation } from "../../../context";
 
 export default function StaffPresenter({
   values,
@@ -15,6 +16,7 @@ export default function StaffPresenter({
   selectedEmployee,
   isStaffInfoOpen,
 }: StaffPresenterProps) {
+  const { t } = useTranslation();
   return (
     <div className="staff">
       <div className="staff__form__container">
@@ -28,12 +30,30 @@ export default function StaffPresenter({
         />
       </div>
       <CalendarContainer calendarEvents={calendarEvents} displayRoom={true} />
-      {isStaffInfoOpen && (
-        <StaffInfoOverlay
-          selectedEmployee={selectedEmployee}
-          toggleStaffInfo={toggleStaffInfo}
-        />
-      )}
+      <DialogContainer
+        isOpen={isStaffInfoOpen && selectedEmployee ? true : false}
+        toggleDialog={toggleStaffInfo}
+        height={"20vh"}
+      >
+        <div className="dialog__wrapper__container__content staff__dialog">
+          <p>
+            {t("form.employee")}:
+            <span>
+              {selectedEmployee?.ime}, {selectedEmployee?.radnoMjesto}
+            </span>
+          </p>
+          <p>
+            {t("e-mail")}: <span>{selectedEmployee?.email}</span>
+          </p>
+          <p>
+            {t("form.staff.department")}:
+            <span>{selectedEmployee?.katedra}</span>
+          </p>
+          <p>
+            {t("form.staff.office")}: <span>{selectedEmployee?.ured}</span>
+          </p>
+        </div>
+      </DialogContainer>
     </div>
   );
 }

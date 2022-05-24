@@ -32,4 +32,15 @@
       }
     }
   }
+  &__dialog {
+    width: fit-content;
+    align-items: baseline;
+    p {
+      margin: 8px 0;
+      span {
+        margin-left: 7px;
+        font-weight: bold;
+      }
+    }
+  }
 }

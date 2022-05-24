@@ -51,5 +51,6 @@
     "err.required.date":"Date is required!",
     "err.required.building":"Please select the building!",
     "err.required.room": "Please select the room!",
+    "err.required.employee": "Please select the employee!",
     "unknown": "Unknown"
 }

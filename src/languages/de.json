@@ -51,5 +51,6 @@
     "err.required.date":"Datum ist erforderlich!",
     "err.required.building":"Bitte wählen Sie das Gebäude aus!",
     "err.required.room": "Bitte wählen Sie das Räume aus!",
+    "err.required.employee": "Bitte wählen Sie den Mitarbeiter aus!",
     "unknown": "Unbekannt"
 }

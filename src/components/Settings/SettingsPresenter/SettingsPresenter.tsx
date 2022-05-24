@@ -8,6 +8,7 @@ import { useTranslation } from "../../../context";
 export default function SettingsPresenter({
   mode,
   language,
+  user,
   toggleMode,
   handleLangChange,
 }: SettingsPresenterProps) {
@@ -39,8 +40,12 @@ export default function SettingsPresenter({
         <div className="settings__page__container__section">
           <h3>{t("settings.user")}</h3>
           <div className="settings__page__container__section__field">
-            <p>{t("username")}: user</p>
-            <p>{t("e-mail")}: email</p>
+            <p>
+              {t("username")}: {user.username}
+            </p>
+            <p>
+              {t("e-mail")}: {user.email}
+            </p>
           </div>
         </div>
         <div className="settings__page__container__section">

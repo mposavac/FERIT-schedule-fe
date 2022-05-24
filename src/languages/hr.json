@@ -51,5 +51,6 @@
     "err.required.date":"Datum je obavezan!",
     "err.required.building":"Odaberite zgradu!",
     "err.required.room": "Odaberite prostoriju!",
+    "err.required.employee": "Odaberite djeltanika!",
     "unknown": "Nepoznato"
 }

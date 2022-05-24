@@ -1,9 +1,10 @@
 import React from "react";
 import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
+import DialogContainer from "../../shared/Dialog/DialogContainer/DialogContainer";
 import RoomsForm from "./RoomsForm/RoomsForm";
 
 import "./RoomsPresenter.scss";
-import StatisticsContainer from "./Statistics/StatisticsContainer/StatisticsContainer";
+import Statistics from "./Statistics/Statistics";
 import { RoomsPresenterProps } from "./types";
 
 export default function RoomsPresenter({
@@ -30,12 +31,14 @@ export default function RoomsPresenter({
         />
       </div>
       <CalendarContainer calendarEvents={calendarEvents} />
-      {isStatsOpen && (
-        <StatisticsContainer
-          toggleStatsOverlay={toggleStatsOverlay}
-          calendarEvents={calendarEvents}
-        />
-      )}
+      <DialogContainer
+        isOpen={isStatsOpen}
+        toggleDialog={toggleStatsOverlay}
+        height={"70vh"}
+        width={"75%"}
+      >
+        <Statistics calendarEvents={calendarEvents} />
+      </DialogContainer>
     </div>
   );
 }

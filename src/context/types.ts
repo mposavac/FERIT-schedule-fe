@@ -33,3 +33,11 @@ export interface AuthStateInterface {
   access_token: string | undefined;
   refresh_token: string | undefined;
 }
+
+export interface UserState {
+  id: string | undefined;
+  username: string | undefined;
+  email: string | undefined;
+  access_token: string | undefined;
+  refresh_token: string | undefined;
+}

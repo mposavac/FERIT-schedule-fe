@@ -6,15 +6,20 @@ import {
   CalendarEventsResponse,
   StaffOptionsResponse,
 } from "../../../interfaces/responses.type";
+import { searchSchema } from "../../../schemas";
 import { InputSelectOption } from "../../shared/InputSelect/types";
 import StaffPresenter from "../StaffPresenter/StaffPresenter";
+import { StaffForm } from "../../../interfaces/forms.type";
 
 export default function StaffContainer() {
   const today = new Date().toISOString();
-  const [values, handleChange, validateForm] = useForm({
-    date: today.substring(0, today.indexOf("T")),
-    employee: { value: "", text: "" },
-  });
+  const [values, handleChange, validateForm] = useForm<StaffForm>(
+    {
+      date: today.substring(0, today.indexOf("T")),
+      employee: { value: "", text: "" },
+    },
+    searchSchema
+  );
   const { showLoader, hideLoader } = useLoading();
   const [fetchedOptions] = useAxios<StaffOptionsResponse[]>(
     "/staff/list",

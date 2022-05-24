@@ -25,3 +25,8 @@ export interface StaffFormProps {
   toggleStaffInfo(): void;
   isThereCalendarEvents: boolean;
 }
+
+export interface StaffInfoOverlayProps {
+  selectedEmployee: StaffOptionsResponse;
+  toggleStaffInfo(): void;
+}
