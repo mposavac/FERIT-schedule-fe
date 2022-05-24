@@ -1,4 +1,4 @@
-export interface RoomsResponse {
+export interface CalendarEventsResponse {
   date: Date;
   timeSlots: TimeSlots[];
 }
@@ -37,4 +37,14 @@ export interface RoomsInfo {
   kvadratura: string;
   napomena: any;
   zaduzenja: any;
+}
+
+export interface StaffOptionsResponse {
+  id: string;
+  ime: string;
+  radnoMjesto: string;
+  znanstvenoPodrucje: string;
+  katedra: string;
+  email: string;
+  ured: string;
 }

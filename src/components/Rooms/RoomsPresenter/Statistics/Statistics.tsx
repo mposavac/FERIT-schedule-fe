@@ -1,18 +1,14 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "../../../../../context";
-import { TimeSlots } from "../../../../../interfaces/responses.type";
-import {
-  StaffTimeSlotData,
-  StatisticsContainerProps,
-  StatisticsData,
-} from "../../types";
-import StatisticsPresenter from "../StatisticsPresenter/StatisticsPresenter";
+import { useTranslation } from "../../../../context";
+import { TimeSlots } from "../../../../interfaces/responses.type";
+import { StaffTimeSlotData, StatisticsProps, StatisticsData } from "../types";
+import { VictoryPie } from "victory";
+import ToggleButton from "../../../shared/ToggleButton/ToggleButton";
+import { capitalizeWords } from "../../../../utils/functions";
+import "./Statistics.scss";
 
-export default function StatisticsContainer({
-  toggleStatsOverlay,
-  calendarEvents,
-}: StatisticsContainerProps) {
+export default function Statistics({ calendarEvents }: StatisticsProps) {
   const [statsData, setStatsData] = useState<StatisticsData[]>([]);
   const [statsType, setStatsType] = useState<string>("availability");
   const { t } = useTranslation();
@@ -21,28 +17,6 @@ export default function StatisticsContainer({
     const calculateStatsData = () => {
       const calcPrecentage = (value1: number, value2: number) => {
         return parseFloat((value1 / value2).toFixed(2)) * 100;
-      };
-
-      const capitalizeWords = (str: string) => {
-        if (str) {
-          let arr = str.split(" ");
-          for (let i = 0; i < arr.length; i++) {
-            let arrDashed = arr[i].split("-");
-            if (arrDashed.length > 1) {
-              for (let j = 0; j < arrDashed.length; j++) {
-                arrDashed[j] =
-                  arrDashed[j].charAt(0).toUpperCase() +
-                  arrDashed[j].slice(1).toLocaleLowerCase();
-              }
-              arr[i] = arrDashed.join("-");
-            } else {
-              arr[i] =
-                arr[i].charAt(0).toUpperCase() +
-                arr[i].slice(1).toLocaleLowerCase();
-            }
-          }
-          return arr.join(" ");
-        } else return t("unknown");
       };
 
       if (calendarEvents && calendarEvents.timeSlots) {
@@ -80,7 +54,8 @@ export default function StatisticsContainer({
                 const startTime = moment(value["pocetak"], "HH:mm");
                 const endTime = moment(value["kraj"], "HH:mm");
                 return {
-                  nastavnik: capitalizeWords(value.nastavnik["#text"]),
+                  nastavnik:
+                    capitalizeWords(value.nastavnik["#text"]) || t("unknown"),
                   slotDuration: Math.floor(endTime.diff(startTime, "minutes")),
                 };
               })
@@ -120,11 +95,24 @@ export default function StatisticsContainer({
   };
 
   return (
-    <StatisticsPresenter
-      toggleStatsOverlay={toggleStatsOverlay}
-      toggleStatsType={toggleStatsType}
-      statsType={statsType}
-      statsData={statsData}
-    />
+    <div className="dialog__wrapper__container__content">
+      <div className="dialog__wrapper__container__content__pie__container">
+        {statsData && (
+          <VictoryPie
+            data={statsData}
+            colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
+            animate={{
+              duration: 200,
+            }}
+          />
+        )}
+      </div>
+      <ToggleButton
+        value={statsType}
+        option1="availability"
+        option2="staff"
+        toggleOption={toggleStatsType}
+      />
+    </div>
   );
 }

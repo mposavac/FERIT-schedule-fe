@@ -6,7 +6,7 @@ import { RoomsForm } from "../../../interfaces/forms.type";
 import {
   BuildingsOptionsResponse,
   RoomsInfo,
-  RoomsResponse,
+  CalendarEventsResponse,
 } from "../../../interfaces/responses.type";
 import { searchSchema } from "../../../schemas";
 import { InputSelectOption } from "../../shared/InputSelect/types";
@@ -23,7 +23,7 @@ export default function RoomsContainer() {
     searchSchema
   );
   const { showLoader, hideLoader } = useLoading();
-  const [data, fetchData] = useAxios<RoomsResponse>(
+  const [data, fetchData] = useAxios<CalendarEventsResponse>(
     `/rooms/availability/${values.date}/${values.room.value}`
   );
   const [fetchedOptions] = useAxios<BuildingsOptionsResponse[]>(

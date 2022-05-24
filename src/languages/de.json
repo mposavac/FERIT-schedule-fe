@@ -19,6 +19,11 @@
     "form.date":"Datum",
     "form.building":"Gebäude",
     "form.room":"Räume",
+    "form.staff": "Suche nach Mitarbeitern",
+    "form.employee": "Angestellter",
+    "form.staff.department": "Abteilung",
+    "form.staff.office": "Sekretariat",
+    "button.staffInfo": "Mitarbeiterinfo",
     "button.statistics": "Zeige Statistiken",
     "Monday": "Montag",
     "Tuesday": "Dienstag",
@@ -46,5 +51,6 @@
     "err.required.date":"Datum ist erforderlich!",
     "err.required.building":"Bitte wählen Sie das Gebäude aus!",
     "err.required.room": "Bitte wählen Sie das Räume aus!",
+    "err.required.employee": "Bitte wählen Sie den Mitarbeiter aus!",
     "unknown": "Unbekannt"
 }

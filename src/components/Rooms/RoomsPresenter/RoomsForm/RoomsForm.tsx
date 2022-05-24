@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useTranslation } from "../../../../context";
 import { InputSelect } from "../../../shared/InputSelect/InputSelectContatiner/InputSelectContainer";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
-import { RoomsFormPresenterProps } from "../types";
+import { RoomsFormProps } from "../types";
 
 export default function RoomsFormPresenter({
   values,
@@ -12,7 +12,7 @@ export default function RoomsFormPresenter({
   roomsOptions,
   isThereCalendarEvents,
   toggleStatsOverlay,
-}: RoomsFormPresenterProps) {
+}: RoomsFormProps) {
   const { t } = useTranslation();
   return (
     <SearchForm

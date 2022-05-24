@@ -1,6 +1,6 @@
-import { Actions } from "./types";
+import { Actions, UserState } from "./types";
 
-export const initState = {
+export const initState: UserState = {
   id: undefined,
   username: undefined,
   email: undefined,

@@ -1,0 +1,70 @@
+@import "../../../../styles/common";
+
+.dialog__wrapper {
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 95px);
+  background: rgb($color-grey-dark, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  animation: fadeInBottom 300ms ease-in-out;
+  transition: 250ms;
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  &__container {
+    width: 50%;
+    min-height: fit-content;
+    background: $color-grey-light;
+    color: $color-grey-dark;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    &__close__container {
+      position: absolute;
+      width: 40px;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      img {
+        transition: 250ms;
+        cursor: pointer;
+        user-select: none;
+        pointer-events: none;
+        &:hover {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &__content {
+      position: relative;
+      width: 85%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+  @keyframes fadeInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}

@@ -8,5 +8,8 @@
     },
     "room":{
         "isRequired": { "err": "err.required.room" }
+    },
+    "employee": {
+        "isRequired": { "err": "err.required.employee" }
     }
 }
