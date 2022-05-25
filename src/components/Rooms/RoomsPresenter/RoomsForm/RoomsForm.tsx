@@ -20,29 +20,6 @@ export default function RoomsFormPresenter({
       date={values.date}
       handleFormChange={handleFormChange}
       handleSearch={handleSearch}
-      additionalInputFields={
-        <>
-          <div className="rooms__form__container__content__field">
-            <label>{t("form.building")}</label>
-            <InputSelect
-              name="building"
-              selectedOption={values.building}
-              optionsList={buildingsOptions}
-              onChange={handleFormChange}
-            />
-          </div>
-          <div className="rooms__form__container__content__field">
-            <label>{t("form.room")}</label>
-            <InputSelect
-              name="room"
-              selectedOption={values.room}
-              optionsList={roomsOptions}
-              onChange={handleFormChange}
-              disabled={!values.building.value}
-            />
-          </div>
-        </>
-      }
       additionalButtons={
         isThereCalendarEvents ? (
           <button onClick={toggleStatsOverlay}>{t("button.statistics")}</button>
@@ -50,6 +27,28 @@ export default function RoomsFormPresenter({
           <></>
         )
       }
-    />
+    >
+      <>
+        <div className="search__form__container__content__field">
+          <label>{t("form.building")}</label>
+          <InputSelect
+            name="building"
+            selectedOption={values.building}
+            optionsList={buildingsOptions}
+            onChange={handleFormChange}
+          />
+        </div>
+        <div className="search__form__container__content__field">
+          <label>{t("form.room")}</label>
+          <InputSelect
+            name="room"
+            selectedOption={values.room}
+            optionsList={roomsOptions}
+            onChange={handleFormChange}
+            disabled={!values.building.value}
+          />
+        </div>
+      </>
+    </SearchForm>
   );
 }

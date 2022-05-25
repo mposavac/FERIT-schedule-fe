@@ -7,4 +7,5 @@ export interface SearchFormProps {
   handleSearch(): void;
   additionalInputFields?: ReactElement;
   additionalButtons?: ReactElement;
+  children?: ReactElement;
 }

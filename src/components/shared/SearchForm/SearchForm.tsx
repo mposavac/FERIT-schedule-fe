@@ -9,8 +9,8 @@ export default function SearchForm({
   date,
   handleFormChange,
   handleSearch,
-  additionalInputFields,
   additionalButtons,
+  children,
 }: SearchFormProps) {
   const { t } = useTranslation();
   return (
@@ -25,7 +25,7 @@ export default function SearchForm({
           onChange={(e: any) => handleFormChange(e)}
         />
       </div>
-      {additionalInputFields}
+      {children}
       <button onClick={handleSearch}>{t("search")}</button>
       {additionalButtons}
     </div>

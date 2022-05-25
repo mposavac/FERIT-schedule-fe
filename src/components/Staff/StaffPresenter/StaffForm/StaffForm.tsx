@@ -19,19 +19,6 @@ export default function StaffForm({
       date={values.date}
       handleFormChange={handleFormChange}
       handleSearch={handleSearch}
-      additionalInputFields={
-        <>
-          <div className="staff__form__container__content__field">
-            <label>{t("form.employee")}</label>
-            <InputSelect
-              name="employee"
-              selectedOption={values.employee}
-              optionsList={staffOptions}
-              onChange={handleFormChange}
-            />
-          </div>
-        </>
-      }
       additionalButtons={
         isThereCalendarEvents ? (
           <button onClick={toggleStaffInfo}>{t("button.staffInfo")}</button>
@@ -39,6 +26,16 @@ export default function StaffForm({
           <></>
         )
       }
-    />
+    >
+      <div className="search__form__container__content__field">
+        <label>{t("form.employee")}</label>
+        <InputSelect
+          name="employee"
+          selectedOption={values.employee}
+          optionsList={staffOptions}
+          onChange={handleFormChange}
+        />
+      </div>
+    </SearchForm>
   );
 }

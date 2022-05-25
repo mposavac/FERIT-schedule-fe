@@ -5,41 +5,4 @@
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - $nav-height - $footer-height);
-  &__form__container {
-    &__content {
-      width: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      min-height: 500px;
-      background: $color-grey-light;
-      border-radius: 7px;
-
-      &__field {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: left;
-        input[type="date"] {
-          width: 80%;
-          height: 30px;
-          display: block;
-          padding: 10px;
-        }
-      }
-
-      button {
-        background: #fff;
-        color: $color-ferit-blue;
-        border: 1px solid $color-ferit-blue;
-        border-radius: 5px;
-        min-width: 60px;
-        height: 30px;
-        cursor: pointer;
-      }
-    }
-  }
 }
