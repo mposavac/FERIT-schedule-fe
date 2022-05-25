@@ -69,16 +69,16 @@
         animation: load2 4.8s ease 0.4s infinite;
       }
       &__h3 {
-        animation: load3 4.8s ease 0.8s infinite;
+        animation: load2 4.8s ease 0.8s infinite;
       }
       &__h4 {
-        animation: load4 4.8s ease 1.2s infinite;
+        animation: load2 4.8s ease 1.2s infinite;
       }
       &__h5 {
-        animation: load5 4.8s ease 1.6s infinite;
+        animation: load1 4.8s ease 1.6s infinite;
       }
       &__h6 {
-        animation: load6 4.8s ease 2s infinite;
+        animation: load1 4.8s ease 2s infinite;
       }
     }
     @keyframes fadeIn {
@@ -95,7 +95,7 @@
         bottom: 0;
         height: 0;
       }
-      6.944444444% {
+      7% {
         bottom: 0;
         height: 100%;
       }
@@ -103,7 +103,7 @@
         top: 0;
         height: 100%;
       }
-      59.944444433% {
+      60% {
         top: 0;
         height: 0;
       }
@@ -114,7 +114,7 @@
         top: 0;
         height: 0;
       }
-      6.944444444% {
+      7% {
         top: 0;
         height: 100%;
       }
@@ -122,84 +122,8 @@
         bottom: 0;
         height: 100%;
       }
-      59.944444433% {
+      60% {
         bottom: 0;
-        height: 0;
-      }
-    }
-
-    @keyframes load3 {
-      0% {
-        top: 0;
-        height: 0;
-      }
-      6.944444444% {
-        top: 0;
-        height: 100%;
-      }
-      50% {
-        bottom: 0;
-        height: 100%;
-      }
-      59.94444443% {
-        bottom: 0;
-        height: 0;
-      }
-    }
-
-    @keyframes load4 {
-      0% {
-        top: 0;
-        height: 0;
-      }
-      6.944444444% {
-        top: 0;
-        height: 100%;
-      }
-      50% {
-        bottom: 0;
-        height: 100%;
-      }
-      59.94444443% {
-        bottom: 0;
-        height: 0;
-      }
-    }
-
-    @keyframes load5 {
-      0% {
-        bottom: 0;
-        height: 0;
-      }
-      6.944444444% {
-        bottom: 0;
-        height: 100%;
-      }
-      50% {
-        top: 0;
-        height: 100%;
-      }
-      59.94444443% {
-        top: 0;
-        height: 0;
-      }
-    }
-
-    @keyframes load6 {
-      0% {
-        bottom: 0;
-        height: 0;
-      }
-      6.944444444% {
-        bottom: 0;
-        height: 100%;
-      }
-      50% {
-        top: 0;
-        height: 100%;
-      }
-      59.94444443% {
-        top: 0;
         height: 0;
       }
     }
