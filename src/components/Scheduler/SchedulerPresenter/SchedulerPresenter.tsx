@@ -10,6 +10,8 @@ export default function SchedulerPresenter({
   values,
   availability,
   displayOption,
+  render,
+  handleRendering,
   toggleDisplayOption,
   handleFormChange,
   handleSearch,
@@ -17,12 +19,22 @@ export default function SchedulerPresenter({
   const { t } = useTranslation();
   return (
     <div className="scheduler">
-      {displayOption === "search" && (
-        <SchedulerForm
-          values={values}
-          handleFormChange={handleFormChange}
-          handleSearch={handleSearch}
-        />
+      {render.renderSearch && (
+        <div
+          className="animation__wrapper"
+          style={{
+            animation: `${
+              displayOption === "search" ? "fadeResize" : "fadeSrhink"
+            } 500ms forwards`,
+          }}
+          onAnimationEnd={handleRendering}
+        >
+          <SchedulerForm
+            values={values}
+            handleFormChange={handleFormChange}
+            handleSearch={handleSearch}
+          />
+        </div>
       )}
       {availability && (
         <div
@@ -35,8 +47,16 @@ export default function SchedulerPresenter({
           <p>{t("scheduler.results")}</p>
         </div>
       )}
-      {displayOption === "results" && (
-        <div className="scheduler__container">
+      {render.renderResults && (
+        <div
+          className="scheduler__container animation__wrapper"
+          style={{
+            animation: `${
+              displayOption === "results" ? "fadeResize" : "fadeSrhink"
+            } 500ms forwards`,
+          }}
+          onAnimationEnd={handleRendering}
+        >
           <div className="scheduler__container__available__rooms">
             <h4>Dostupne prostorije: </h4>
             <div className="scheduler__container__available__rooms__content">
@@ -56,7 +76,7 @@ export default function SchedulerPresenter({
                 </div>
                 <CalendarContainer
                   calendarEvents={{
-                    date: new Date(),
+                    date: el.date,
                     timeSlots: el.unavailableSlots || [],
                   }}
                 />

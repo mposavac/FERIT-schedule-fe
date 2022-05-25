@@ -20,6 +20,8 @@ export default function SchedulerContainer() {
   );
   const { showLoader, hideLoader } = useLoading();
   const [displayOption, setDisplayOption] = useState("search");
+  const [renderResults, setRenderResults] = useState(false);
+  const [renderSearch, setRenderSearch] = useState(true);
   const [data, fetchData] = useAxios<any>(`/scheduler/availability`);
 
   const handleFormChange = (e: any) => {
@@ -41,11 +43,24 @@ export default function SchedulerContainer() {
   const toggleDisplayOption = () => {
     setDisplayOption(displayOption === "search" ? "results" : "search");
   };
+
+  const handleRendering = () => {
+    if (displayOption === "search") {
+      setRenderResults(false);
+      setRenderSearch(true);
+    } else if (displayOption === "results") {
+      setRenderResults(true);
+      setRenderSearch(false);
+    }
+  };
+
   return (
     <SchedulerPresenter
       values={values}
       availability={data}
       displayOption={displayOption}
+      render={{ renderResults, renderSearch }}
+      handleRendering={handleRendering}
       toggleDisplayOption={toggleDisplayOption}
       handleFormChange={handleFormChange}
       handleSearch={handleSearch}
