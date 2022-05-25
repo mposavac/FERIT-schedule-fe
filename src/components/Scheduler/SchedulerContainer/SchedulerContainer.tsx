@@ -13,7 +13,7 @@ export default function SchedulerContainer() {
       date: today.toISOString().substring(0, today.toISOString().indexOf("T")),
       startTime: moment(today).format("HH:mm"),
       endTime: moment(today).add(1, "hour").format("HH:mm"),
-      capacity: 0,
+      capacity: 1,
     },
     searchSchema
   );
@@ -27,7 +27,7 @@ export default function SchedulerContainer() {
     } else handleChange(e);
   };
   const handleSearch = () => {
-    submit(validateForm, values, "post", setDisplayOption("results"));
+    submit(validateForm, values, "post", () => setDisplayOption("results"));
   };
 
   const toggleDisplayOption = () => {

@@ -58,5 +58,10 @@
     "err.required.building":"Please select the building!",
     "err.required.room": "Please select the room!",
     "err.required.employee": "Please select the employee!",
+    "err.required.startTime": "Start Time is required!",
+    "err.required.endTime": "End Time is required!",
+    "err.invalid.time": "Please check the time fields!",
+    "err.required.capacity": "Capacity is required!",
+    "err.min.value.capacity": "Minimal Capacity is 1!",
     "unknown": "Unknown"
 }

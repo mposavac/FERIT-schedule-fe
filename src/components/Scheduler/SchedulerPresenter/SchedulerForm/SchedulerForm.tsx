@@ -40,7 +40,7 @@ export default function SchedulerForm({
           <input
             type="number"
             name="capacity"
-            min={0}
+            min={1}
             value={values.capacity}
             onChange={(e: any) => handleFormChange(e)}
           />

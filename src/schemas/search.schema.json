@@ -11,5 +11,17 @@
     },
     "employee": {
         "isRequired": { "err": "err.required.employee" }
+    },
+    "startTime": {
+        "isRequired": { "err": "err.required.startTime" },
+        "isTime": { "compareTo": "endTime", "compareIfIs": "higher", "err": "err.invalid.time"}
+    },
+    "endTime": {
+        "isRequired": { "err": "err.required.endTime" },
+        "isTime": { "compareTo": "startTime", "compareIfIs": "lower", "err": "err.invalid.time"}
+    },
+    "capacity":{
+        "isRequired": { "err": "err.required.capacity" },
+        "minValue": { "min": 1, "err": "err.min.value.capacity"}
     }
 }

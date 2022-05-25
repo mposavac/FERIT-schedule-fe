@@ -1,3 +1,4 @@
+import moment from "moment";
 import { useTranslation, useErrorMsg } from "../context";
 
 export const useValidation = (validationSchema: any) => {
@@ -46,6 +47,26 @@ export const useValidation = (validationSchema: any) => {
           : (values as any)?.[key];
       if (validationSchema?.[key]?.isRequired && !value)
         return validationSchema?.[key]?.isRequired?.err;
+      if (validationSchema?.[key]?.minValue?.min > parseInt(value))
+        return validationSchema?.[key]?.minValue?.err;
+      if (validationSchema?.[key]?.isTime) {
+        const operator = validationSchema?.[key]?.isTime?.compareIfIs;
+        const comapreToKey = validationSchema?.[key]?.isTime?.compareTo;
+        const compareTo =
+          (values as any)?.[comapreToKey]?.value !== undefined
+            ? (values as any)?.[comapreToKey]?.value
+            : (values as any)?.[comapreToKey];
+        if (
+          operator === "higher" &&
+          moment(value, "HH:mm").isAfter(moment(compareTo, "HH:mm"))
+        )
+          return validationSchema?.[key]?.isTime?.err;
+        if (
+          operator === "lower" &&
+          moment(value, "HH:mm").isBefore(moment(compareTo, "HH:mm"))
+        )
+          return validationSchema?.[key]?.isTime?.err;
+      }
     }
     return "";
   };
