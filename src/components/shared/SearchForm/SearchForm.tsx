@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "../../../context";
 import { SearchFormProps } from "./types";
-
 import "./SearchForm.scss";
 
 export default function SearchForm({

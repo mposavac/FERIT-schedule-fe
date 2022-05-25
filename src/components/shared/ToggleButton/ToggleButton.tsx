@@ -11,7 +11,7 @@ export default function ToggleButton({
 }: ToggleButtonProps) {
   const { t } = useTranslation();
   return (
-    <div className="toggle__button__container">
+    <div className="toggle__button__container flex-center">
       <input
         type="radio"
         name="choice"

@@ -8,9 +8,6 @@
   height: $nav-height;
   border-bottom: 4px solid $color-grey-light;
   &__left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100%;
     img {
       padding-right: 40px;

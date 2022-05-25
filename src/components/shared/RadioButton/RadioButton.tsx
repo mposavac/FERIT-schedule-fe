@@ -8,7 +8,7 @@ export default function RadioButton({
   handleChange,
 }: RadioButtonProps) {
   return (
-    <label className="radio-button__container">
+    <label className="radio-button__container flex-center">
       <input
         type="checkbox"
         name={option}

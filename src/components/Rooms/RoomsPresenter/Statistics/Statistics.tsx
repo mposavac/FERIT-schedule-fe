@@ -99,7 +99,7 @@ export default function Statistics({ calendarEvents }: StatisticsProps) {
   };
 
   return (
-    <div className="dialog__wrapper__container__content">
+    <div className="dialog__wrapper__container__content flex-center">
       <div className="dialog__wrapper__container__content__pie__container">
         {statsData && (
           <VictoryPie

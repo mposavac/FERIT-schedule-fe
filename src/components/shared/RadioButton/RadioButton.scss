@@ -1,9 +1,6 @@
 @import "../../../styles/common";
 
 .radio-button__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   input {
     display: none;
     & + div {

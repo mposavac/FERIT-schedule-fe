@@ -12,7 +12,7 @@ export default function Footer() {
   }, [pathname]);
 
   return shouldRender ? (
-    <div className="footer__container">
+    <div className="footer__container flex-center">
       <p>&copy; {new Date().getFullYear()}</p>
       <p>FERIT</p>
       <span />

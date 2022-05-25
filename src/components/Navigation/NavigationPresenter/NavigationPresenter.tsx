@@ -19,7 +19,7 @@ export default function NavigationPresenter({
   const { t } = useTranslation();
   return (
     <div className="navigation__container">
-      <div className="navigation__container__left">
+      <div className="navigation__container__left flex-center">
         <img src={mode === "light" ? feritLogo : feritLogoBijeli} alt="" />
         <span />
         <div className="link__container">

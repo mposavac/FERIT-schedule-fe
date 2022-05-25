@@ -11,13 +11,13 @@
     width: 100px;
     margin-top: 50px;
     &__field {
-      height: 75px;
-      font-size: 14px;
-      background: $color-grey-light;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      height: 75px;
+      font-size: 14px;
+      background: $color-grey-light;
       margin: 6.25px 0;
       p {
         padding: 4px 0;
@@ -33,21 +33,15 @@
     width: 250px;
     &__name {
       background: $color-grey-light;
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       height: 56.25px;
     }
     &__blocks {
       position: relative;
       .block {
+        flex-direction: column;
         position: absolute;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         text-align: center;
         color: #777;
         p {
