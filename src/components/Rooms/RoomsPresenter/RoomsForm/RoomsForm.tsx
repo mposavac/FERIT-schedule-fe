@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useTranslation } from "../../../../context";
 import { InputSelect } from "../../../shared/InputSelect/InputSelectContatiner/InputSelectContainer";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
-import { RoomsFormProps } from "../types";
+import { RoomsFormProps } from "../../types";
 
 export default function RoomsFormPresenter({
   values,

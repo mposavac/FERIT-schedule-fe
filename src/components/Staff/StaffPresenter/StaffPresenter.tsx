@@ -1,6 +1,6 @@
 import React from "react";
 import StaffForm from "./StaffForm/StaffForm";
-import { StaffPresenterProps } from "./types";
+import { StaffPresenterProps } from "../types";
 import "./StaffPresenter.scss";
 import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
 import DialogContainer from "../../shared/Dialog/DialogContainer/DialogContainer";

@@ -2,9 +2,10 @@ import React from "react";
 import { deFlag, enFlag, frFlag, hrFlag } from "../../../styles/assets/images";
 import RadioButton from "../../shared/RadioButton/RadioButton";
 import ToggleButton from "../../shared/ToggleButton/ToggleButton";
-import { SettingsPresenterProps } from "./types";
+import { SettingsPresenterProps } from "../types";
 import "./SettingsPresenter.scss";
 import { useTranslation } from "../../../context";
+
 export default function SettingsPresenter({
   mode,
   language,

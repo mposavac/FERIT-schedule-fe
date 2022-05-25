@@ -1,10 +1,10 @@
 import { FormEvent } from "react";
-import { StaffForm } from "../../../interfaces/forms.type";
+import { StaffForm } from "../../interfaces/forms.type";
 import {
   CalendarEventsResponse,
   StaffOptionsResponse,
-} from "../../../interfaces/responses.type";
-import { InputSelectOption } from "../../shared/InputSelect/types";
+} from "../../interfaces/responses.type";
+import { InputSelectOption } from "../shared/InputSelect/types";
 
 export interface StaffPresenterProps {
   values: StaffForm;

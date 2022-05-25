@@ -1,4 +1,4 @@
-import { UserState } from "../../../context/types";
+import { UserState } from "../../context/types";
 
 export interface SettingsPresenterProps {
   mode: string;

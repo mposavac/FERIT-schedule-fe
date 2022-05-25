@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "../../../../context";
 import { InputSelect } from "../../../shared/InputSelect/InputSelectContatiner/InputSelectContainer";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
-import { StaffFormProps } from "../types";
+import { StaffFormProps } from "../../types";
 
 export default function StaffForm({
   values,

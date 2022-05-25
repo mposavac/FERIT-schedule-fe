@@ -5,7 +5,7 @@ import RoomsForm from "./RoomsForm/RoomsForm";
 
 import "./RoomsPresenter.scss";
 import Statistics from "./Statistics/Statistics";
-import { RoomsPresenterProps } from "./types";
+import { RoomsPresenterProps } from "../types";
 
 export default function RoomsPresenter({
   values,
