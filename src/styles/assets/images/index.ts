@@ -4,6 +4,7 @@ import profilePlaceholder from "./profilePlaceholder.jpg";
 import arrowIcon from "./up-arrow.svg";
 import emailIcon from "./email-icon.svg";
 import crossIcon from "./cross-icon.svg";
+import searchIcon from "./search.svg";
 import hrFlag from "./hr.svg";
 import enFlag from "./en.svg";
 import deFlag from "./de.svg";
@@ -16,6 +17,7 @@ export {
   arrowIcon,
   emailIcon,
   crossIcon,
+  searchIcon,
   hrFlag,
   enFlag,
   deFlag,

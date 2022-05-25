@@ -12,11 +12,17 @@ export const useAxios = <S>(url: string, fetchOnLoad?: boolean) => {
     setUrlState(url);
   }, [url]);
 
-  const fetchData = async (url?: string) => {
-    await axios
-      .get(url || urlState, {
-        headers: { Authorization: `Bearer ${access_token}` },
-      })
+  const fetchData = async (
+    url?: string,
+    method?: "get" | "post" | "put",
+    data?: any
+  ) => {
+    await axios({
+      url: url || urlState,
+      method: method || "get",
+      headers: { Authorization: `Bearer ${access_token}` },
+      data: { ...data },
+    })
       .then((res) => {
         setData(res.data);
       })
