@@ -18,7 +18,7 @@ export default function SchedulerPresenter({
 }: SchedulerPresenterProps) {
   const { t } = useTranslation();
   return (
-    <div className="scheduler">
+    <div className="page__wrapper">
       {render.renderSearch && (
         <div
           className="animation__wrapper"
@@ -71,7 +71,7 @@ export default function SchedulerPresenter({
                 key={i}
                 className="scheduler__container__calendar__wrapper__container"
               >
-                <div className="scheduler__container__calendar__wrapper__container__title">
+                <div className="scheduler__container__calendar__wrapper__container__title flex-center">
                   <h3>{el.name}</h3>
                 </div>
                 <CalendarContainer

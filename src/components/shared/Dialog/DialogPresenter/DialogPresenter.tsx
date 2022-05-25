@@ -10,10 +10,10 @@ export default function DialogPresenter({
   width,
 }: DialogPresenterProps) {
   return (
-    <div className="dialog__wrapper">
+    <div className="dialog__wrapper flex-center">
       <div className="dialog__wrapper__background" onClick={toggleDialog} />
       <div
-        className="dialog__wrapper__container"
+        className="dialog__wrapper__container flex-center"
         style={{ height: height, width: width }}
       >
         <div className="dialog__wrapper__container__close__container">

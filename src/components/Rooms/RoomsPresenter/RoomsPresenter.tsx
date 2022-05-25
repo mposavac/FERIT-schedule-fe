@@ -2,8 +2,6 @@ import React from "react";
 import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
 import DialogContainer from "../../shared/Dialog/DialogContainer/DialogContainer";
 import RoomsForm from "./RoomsForm/RoomsForm";
-
-import "./RoomsPresenter.scss";
 import Statistics from "./Statistics/Statistics";
 import { RoomsPresenterProps } from "../types";
 
@@ -18,7 +16,7 @@ export default function RoomsPresenter({
   roomsOptions,
 }: RoomsPresenterProps) {
   return (
-    <div className="rooms">
+    <div className="page__wrapper">
       <div className="rooms__form__container">
         <RoomsForm
           values={values}

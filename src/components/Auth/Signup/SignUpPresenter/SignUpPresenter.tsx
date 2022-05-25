@@ -9,7 +9,7 @@ export default function SignUpPresenter({
 }: SignUpPresenterProps) {
   const { t } = useTranslation();
   return (
-    <form onSubmit={submit}>
+    <form className="flex-center" onSubmit={submit}>
       <h2>{t("signup")}</h2>
       <div className="inputs__container">
         <label htmlFor="username">{t("username")}</label>

@@ -7,7 +7,7 @@ export default function AuthBackground({ children, additionalContent }: any) {
     <div className="auth__container">
       <div className="auth__container__inner">
         <div className="auth__container__inner__content">{children}</div>
-        <div className="auth__container__inner__additional">
+        <div className="auth__container__inner__additional flex-center">
           <img src={feritLogoBijeli} alt="" />
           {additionalContent}
         </div>

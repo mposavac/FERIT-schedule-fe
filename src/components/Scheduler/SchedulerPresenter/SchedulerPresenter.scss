@@ -1,11 +1,6 @@
 @import "../../../styles/common";
 
 .scheduler {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - $nav-height - $footer-height);
   &__container {
     display: flex;
     flex-direction: column;
@@ -52,10 +47,8 @@
       }
       &__container {
         &__title {
-          display: flex;
           margin-right: 25px;
           margin-left: 125px;
-          justify-content: center;
           text-align: center;
         }
       }
@@ -106,8 +99,6 @@
   .animation__wrapper {
     overflow: hidden;
     width: 100%;
-    display: flex;
-    justify-content: center;
     @keyframes fadeResize {
       0% {
         opacity: 0;

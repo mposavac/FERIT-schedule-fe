@@ -36,11 +36,11 @@ export default function SettingsPresenter({
   };
 
   return (
-    <div className="settings__page">
+    <div className="settings__page flex-center">
       <div className="settings__page__container">
         <div className="settings__page__container__section">
           <h3>{t("settings.user")}</h3>
-          <div className="settings__page__container__section__field">
+          <div className="settings__page__container__section__field flex-center">
             <p>
               {t("username")}: {user.username}
             </p>
@@ -51,7 +51,7 @@ export default function SettingsPresenter({
         </div>
         <div className="settings__page__container__section">
           <h3>{t("settings.mode")}</h3>
-          <div className="settings__page__container__section__field">
+          <div className="settings__page__container__section__field flex-center">
             <ToggleButton
               value={mode}
               option1="light"
@@ -62,7 +62,7 @@ export default function SettingsPresenter({
         </div>
         <div className="settings__page__container__section">
           <h3>{t("settings.language")}</h3>
-          <div className="settings__page__container__section__field">
+          <div className="settings__page__container__section__field flex-center">
             <div className="settings__page__container__section__field__lang">
               {renderLanguageOption("Hrvatski", "hr", hrFlag)}
               {renderLanguageOption("English", "en", enFlag)}

@@ -20,7 +20,7 @@ export default function CalendarPresenter({
   const renderBlock = (event: CalendarEvent, i: number) => (
     <div
       key={i}
-      className="block"
+      className="block flex-center"
       style={{
         top: event.position,
         height: event.height,
@@ -46,7 +46,7 @@ export default function CalendarPresenter({
         {renderHours("20:15", "21:45")}
       </div>
       <div className="calendar__container__day">
-        <div className="calendar__container__day__name">
+        <div className="calendar__container__day__name flex-center">
           <p>{t(day)}</p>
           <p>{t(date)}</p>
         </div>

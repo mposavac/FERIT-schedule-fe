@@ -18,7 +18,7 @@ export default function StaffPresenter({
 }: StaffPresenterProps) {
   const { t } = useTranslation();
   return (
-    <div className="staff">
+    <div className="page__wrapper">
       <div className="staff__form__container">
         <StaffForm
           values={values}
@@ -35,7 +35,7 @@ export default function StaffPresenter({
         toggleDialog={toggleStaffInfo}
         height={"20vh"}
       >
-        <div className="dialog__wrapper__container__content staff__dialog">
+        <div className="dialog__wrapper__container__content flex-center staff__dialog">
           <p>
             {t("form.employee")}:
             <span>

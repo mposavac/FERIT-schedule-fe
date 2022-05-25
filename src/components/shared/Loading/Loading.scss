@@ -7,17 +7,11 @@
   top: 0;
   left: 0;
   background: rgba(#000, 0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100000000;
   opacity: 0;
   animation: fadeIn 300ms forwards;
+  z-index: 100000000;
   .loading__container {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     &:nth-child(1) {
       .loading__container__rectangle {
         width: 90px;

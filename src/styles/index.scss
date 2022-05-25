@@ -39,3 +39,16 @@ body {
     transition: 250ms;
   }
 }
+
+.page__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - $nav-height - $footer-height);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

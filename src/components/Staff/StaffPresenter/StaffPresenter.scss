@@ -1,10 +1,6 @@
 @import "../../../styles/common";
 
 .staff {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - $nav-height - $footer-height);
   &__dialog {
     width: fit-content;
     align-items: baseline;

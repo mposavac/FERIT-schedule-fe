@@ -2,9 +2,6 @@
 
 .settings__page {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   min-height: calc(100vh - $nav-height - $footer-height);
   &__container {
@@ -27,19 +24,13 @@
         width: 100%;
       }
       &__field {
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         width: 100%;
         min-height: calc(120px - 25px);
         &__lang {
           width: fit-content;
           height: fit-content;
-          display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           border-radius: 7px;
           overflow: hidden;
           border: 1px $color-grey-light solid;
