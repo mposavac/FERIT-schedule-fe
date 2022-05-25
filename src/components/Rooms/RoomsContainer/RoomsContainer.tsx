@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLoading } from "../../../context";
 import { useAxios } from "../../../hooks/useAxios";
 import { useForm } from "../../../hooks/useForm";
 import { RoomsForm } from "../../../interfaces/forms.type";
@@ -22,11 +21,10 @@ export default function RoomsContainer() {
     },
     searchSchema
   );
-  const { showLoader, hideLoader } = useLoading();
-  const [data, fetchData] = useAxios<CalendarEventsResponse>(
+  const { data, submit } = useAxios<CalendarEventsResponse>(
     `/rooms/availability/${values.date}/${values.room.value}`
   );
-  const [fetchedOptions] = useAxios<BuildingsOptionsResponse[]>(
+  const { data: fetchedOptions } = useAxios<BuildingsOptionsResponse[]>(
     "/rooms/buildings",
     true
   );
@@ -57,14 +55,7 @@ export default function RoomsContainer() {
   };
 
   const handleSearch = () => {
-    showLoader();
-    validateForm()
-      .then(() =>
-        fetchData().then(() => {
-          hideLoader();
-        })
-      )
-      .catch(() => hideLoader());
+    submit(validateForm);
   };
 
   const handleStatsOverlay = () => {

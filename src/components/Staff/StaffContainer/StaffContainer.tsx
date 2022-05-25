@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLoading } from "../../../context";
 import { useAxios } from "../../../hooks/useAxios";
 import { useForm } from "../../../hooks/useForm";
 import {
@@ -20,12 +19,11 @@ export default function StaffContainer() {
     },
     searchSchema
   );
-  const { showLoader, hideLoader } = useLoading();
-  const [fetchedOptions] = useAxios<StaffOptionsResponse[]>(
+  const { data: fetchedOptions } = useAxios<StaffOptionsResponse[]>(
     "/staff/list",
     true
   );
-  const [data, fetchData] = useAxios<CalendarEventsResponse>(
+  const { data, submit } = useAxios<CalendarEventsResponse>(
     `/staff/availability/${values.date}/${values.employee.value}`
   );
   const [staffOptions, setStaffsOptions] = useState<InputSelectOption[]>([]);
@@ -45,14 +43,7 @@ export default function StaffContainer() {
   };
 
   const handleSearch = () => {
-    showLoader();
-    validateForm()
-      .then(() =>
-        fetchData().then(() => {
-          hideLoader();
-        })
-      )
-      .catch(() => hideLoader());
+    submit(validateForm);
   };
 
   const handleStaffInfoOverlay = () => {

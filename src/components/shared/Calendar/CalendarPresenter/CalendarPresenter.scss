@@ -52,13 +52,13 @@
         color: #777;
         p {
           margin-bottom: 3px;
-        }
-        p.title {
-          font-size: 14px;
-        }
-        p.employee,
-        p.time {
-          font-size: 12px;
+          &.title {
+            font-size: 14px;
+          }
+          &.employee,
+          &.time {
+            font-size: 12px;
+          }
         }
       }
     }

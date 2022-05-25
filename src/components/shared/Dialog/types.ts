@@ -1,5 +1,7 @@
+import { ReactElement } from "react";
+
 export interface DialogContainerProps {
-  children: JSX.Element;
+  children: ReactElement;
   isOpen: boolean;
   toggleDialog(): void;
   height?: string;
@@ -7,7 +9,7 @@ export interface DialogContainerProps {
 }
 
 export interface DialogPresenterProps {
-  children: JSX.Element;
+  children: ReactElement;
   toggleDialog(): void;
   height?: string;
   width?: string;

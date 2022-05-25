@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { useLoading } from "../../../context";
 import { useAxios } from "../../../hooks/useAxios";
 import { useForm } from "../../../hooks/useForm";
 import { SchedulerForm } from "../../../interfaces/forms.type";
@@ -14,30 +13,21 @@ export default function SchedulerContainer() {
       date: today.toISOString().substring(0, today.toISOString().indexOf("T")),
       startTime: moment(today).format("HH:mm"),
       endTime: moment(today).add(1, "hour").format("HH:mm"),
-      capacity: 0,
+      capacity: 1,
     },
     searchSchema
   );
-  const { showLoader, hideLoader } = useLoading();
   const [displayOption, setDisplayOption] = useState("search");
   const [renderResults, setRenderResults] = useState(false);
   const [renderSearch, setRenderSearch] = useState(true);
-  const [data, fetchData] = useAxios<any>(`/scheduler/availability`);
+  const { data, submit } = useAxios<any>(`/scheduler/availability`);
 
   const handleFormChange = (e: any) => {
     if (e["building"]) {
     } else handleChange(e);
   };
   const handleSearch = () => {
-    showLoader();
-    validateForm()
-      .then(() =>
-        fetchData(undefined, "post", values).then(() => {
-          hideLoader();
-          setDisplayOption("results");
-        })
-      )
-      .catch(() => hideLoader());
+    submit(validateForm, values, "post", () => setDisplayOption("results"));
   };
 
   const toggleDisplayOption = () => {

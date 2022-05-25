@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
-import { RoomsForm } from "../../../interfaces/forms.type";
-import { CalendarEventsResponse } from "../../../interfaces/responses.type";
-import { InputSelectOption } from "../../shared/InputSelect/types";
+import { RoomsForm } from "../../interfaces/forms.type";
+import { CalendarEventsResponse } from "../../interfaces/responses.type";
+import { InputSelectOption } from "../shared/InputSelect/types";
 
 export interface RoomsFormProps {
   values: RoomsForm;

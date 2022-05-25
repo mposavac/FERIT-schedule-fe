@@ -2,7 +2,11 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "../../../../context";
 import { TimeSlots } from "../../../../interfaces/responses.type";
-import { StaffTimeSlotData, StatisticsProps, StatisticsData } from "../types";
+import {
+  StaffTimeSlotData,
+  StatisticsProps,
+  StatisticsData,
+} from "../../types";
 import { VictoryPie } from "victory";
 import ToggleButton from "../../../shared/ToggleButton/ToggleButton";
 import { capitalizeWords } from "../../../../utils/functions";

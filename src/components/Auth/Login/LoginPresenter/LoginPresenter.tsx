@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "../../../../context";
-import { LoginPresenterProps } from "./types";
+import { LoginPresenterProps } from "../types";
 
 export default function LoginPresenter({
   values,

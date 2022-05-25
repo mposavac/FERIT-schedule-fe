@@ -9,7 +9,7 @@ import {
   profilePlaceholder,
 } from "../../../styles/assets/images";
 import "./NavigationPresenter.scss";
-import { NavigationPresenterProps } from "./types";
+import { NavigationPresenterProps } from "../types";
 
 export default function NavigationPresenter({
   handleLogout,

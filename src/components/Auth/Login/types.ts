@@ -1,8 +1,8 @@
 import { FormEvent } from "react";
-import { SignUpForm } from "../../../../interfaces/auth.types";
+import { LoginForm } from "../../../interfaces/auth.types";
 
-export interface SignUpPresenterProps {
-  values: SignUpForm;
+export interface LoginPresenterProps {
+  values: LoginForm;
   handleChange(e: any): void;
   submit(e: FormEvent<HTMLFormElement> | undefined): void;
 }

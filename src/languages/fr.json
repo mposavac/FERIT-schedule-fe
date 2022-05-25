@@ -58,5 +58,10 @@
     "err.required.building":"Veuillez sélectionner le bâtiment!",
     "err.required.room": "Veuillez sélectionner la salle!",
     "err.required.employee": "Veuillez sélectionner l'employé!",
+    "err.required.startTime": "L'heure de début est requise!",
+    "err.required.endTime": "L'heure de fin est requise!",
+    "err.invalid.time": "Veuillez vérifier les champs d'heure!",
+    "err.required.capacity": "La capacité est requise!",
+    "err.min.value.capacity": "La capacité minimale est de 1!",
     "unknown": "Inconnue"
 }
