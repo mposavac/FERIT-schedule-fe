@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuthState } from "../context";
+import { useAuthState, useLoading } from "../context";
 import { useRefreshToken } from "./useRefreshToken";
 
 export const useAxios = <S>(url: string, fetchOnLoad?: boolean) => {
@@ -7,6 +7,7 @@ export const useAxios = <S>(url: string, fetchOnLoad?: boolean) => {
   const [urlState, setUrlState] = useState("");
   const { access_token } = useAuthState();
   const [axios] = useRefreshToken();
+  const { showLoader, hideLoader } = useLoading();
 
   useEffect(() => {
     setUrlState(url);
@@ -34,10 +35,27 @@ export const useAxios = <S>(url: string, fetchOnLoad?: boolean) => {
       });
   };
 
+  const submit = async (
+    validateForm: any,
+    form?: any,
+    method?: any,
+    onSuccess?: any
+  ) => {
+    showLoader();
+    validateForm()
+      .then(() =>
+        fetchData(undefined, method, form).then(() => {
+          hideLoader();
+          onSuccess();
+        })
+      )
+      .catch(() => hideLoader());
+  };
+
   useEffect(() => {
     if (fetchOnLoad) fetchData(url);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchOnLoad]);
 
-  return [data, fetchData] as const;
+  return { data, fetchData, submit };
 };
