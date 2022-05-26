@@ -34,6 +34,7 @@ export default function StaffForm({
           selectedOption={values.employee}
           optionsList={staffOptions}
           onChange={handleFormChange}
+          searchable={true}
         />
       </div>
     </SearchForm>
