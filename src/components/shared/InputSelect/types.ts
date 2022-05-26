@@ -7,9 +7,13 @@ export interface InputSelectPresenterProps {
   optionsList: InputSelectOption[];
   selectedOption: InputSelectOption;
   toggleOpen: boolean;
+  search: string;
+  inputRef: any;
+  handleSearch: (e: any) => void;
   handleOptionClick: (e: any) => void;
   handleOpenOptions: () => void;
   disabled?: boolean;
+  searchable?: boolean;
 }
 
 export interface InputSelectContainerProps {
@@ -18,4 +22,5 @@ export interface InputSelectContainerProps {
   selectedOption: InputSelectOption;
   onChange: (e: any) => void;
   disabled?: boolean;
+  searchable?: boolean;
 }

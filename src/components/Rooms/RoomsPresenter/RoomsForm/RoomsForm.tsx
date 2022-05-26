@@ -46,6 +46,7 @@ export default function RoomsFormPresenter({
             optionsList={roomsOptions}
             onChange={handleFormChange}
             disabled={!values.building.value}
+            searchable={true}
           />
         </div>
       </>
