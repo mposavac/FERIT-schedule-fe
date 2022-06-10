@@ -8,21 +8,13 @@ export const initState: UserState = {
   refresh_token: undefined,
 };
 
-export const AuthReducer = (state = initState, action: Actions) => {
+export const AuthReducer = (state: UserState, action: Actions) => {
   switch (action.type) {
     case "LOGIN_SUCCESS":
-      return {
-        ...initState,
-        ...action.payload,
-      };
     case "SIGNUP_SUCCESS":
-      return {
-        ...initState,
-        ...action.payload,
-      };
     case "REFRESH_SUCCESS":
       return {
-        ...initState,
+        ...state,
         ...action.payload,
       };
     case "LOGOUT_SUCCESS":
