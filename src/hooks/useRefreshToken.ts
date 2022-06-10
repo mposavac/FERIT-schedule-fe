@@ -21,7 +21,7 @@ export const useRefreshToken = () => {
           prevReq.headers["Authorization"] = `Bearer ${newAccessToken}`;
           return axiosInstance(prevReq);
         }
-        return err;
+        throw err;
       }
     );
     return () => {
