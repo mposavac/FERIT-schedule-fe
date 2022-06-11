@@ -10,19 +10,21 @@ import {
 import { searchSchema } from "../../../schemas";
 import { InputSelectOption } from "../../shared/InputSelect/types";
 import RoomsPresenter from "../RoomsPresenter/RoomsPresenter";
+import moment from "moment";
 
 export default function RoomsContainer() {
   const today = new Date().toISOString();
   const [values, handleChange, validateForm] = useForm<RoomsForm>(
     {
-      date: today.substring(0, today.indexOf("T")),
+      startDate: today.substring(0, today.indexOf("T")),
+      endDate: moment(today).add(5, "days").format("YYYY-MM-DD"),
       building: { value: "", text: "" },
       room: { value: "", text: "" },
     },
     searchSchema
   );
-  const { data, submit } = useAxios<CalendarEventsResponse>(
-    `/rooms/availability/${values.date}/${values.room.value}`
+  const { data, submit } = useAxios<CalendarEventsResponse[]>(
+    `/rooms/availability/${values.startDate}/${values.endDate}/${values.room.value}`
   );
   const { data: fetchedOptions } = useAxios<BuildingsOptionsResponse[]>(
     "/rooms/buildings",

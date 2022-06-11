@@ -30,9 +30,10 @@
     }
   }
   &__day {
-    background: rgba($color-grey-light, 0.5);
+    background: rgba($color-grey-light, 0.25);
     position: relative;
     width: 250px;
+    margin-right: 15px;
     &__name {
       background: $color-grey-light;
       flex-direction: column;
@@ -46,6 +47,7 @@
         width: 100%;
         text-align: center;
         color: #777;
+        border-radius: 5px;
         p {
           margin-bottom: 3px;
           &.title {

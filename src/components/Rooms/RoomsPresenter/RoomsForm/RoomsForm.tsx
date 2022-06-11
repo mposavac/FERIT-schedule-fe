@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { useTranslation } from "../../../../context";
 import { InputSelect } from "../../../shared/InputSelect/InputSelectContatiner/InputSelectContainer";
+import InputField from "../../../shared/SearchForm/InputField/InputField";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
 import { RoomsFormProps } from "../../types";
 
@@ -17,8 +18,6 @@ export default function RoomsFormPresenter({
   return (
     <SearchForm
       searchText={"form.rooms"}
-      date={values.date}
-      handleFormChange={handleFormChange}
       handleSearch={handleSearch}
       additionalButtons={
         isThereCalendarEvents ? (
@@ -29,26 +28,42 @@ export default function RoomsFormPresenter({
       }
     >
       <>
-        <div className="search__form__container__content__field">
-          <label>{t("form.building")}</label>
-          <InputSelect
-            name="building"
-            selectedOption={values.building}
-            optionsList={buildingsOptions}
-            onChange={handleFormChange}
-          />
-        </div>
-        <div className="search__form__container__content__field">
-          <label>{t("form.room")}</label>
-          <InputSelect
-            name="room"
-            selectedOption={values.room}
-            optionsList={roomsOptions}
-            onChange={handleFormChange}
-            disabled={!values.building.value}
-            searchable={true}
-          />
-        </div>
+        <InputField
+          name="startDate"
+          type="date"
+          value={values.startDate}
+          onChange={handleFormChange}
+        />
+        <InputField
+          name="endDate"
+          type="date"
+          value={values.endDate}
+          onChange={handleFormChange}
+        />
+        <InputField
+          name="building"
+          customField={
+            <InputSelect
+              name="building"
+              selectedOption={values.building}
+              optionsList={buildingsOptions}
+              onChange={handleFormChange}
+            />
+          }
+        />
+        <InputField
+          name="room"
+          customField={
+            <InputSelect
+              name="room"
+              selectedOption={values.room}
+              optionsList={roomsOptions}
+              onChange={handleFormChange}
+              disabled={!values.building.value}
+              searchable={true}
+            />
+          }
+        />
       </>
     </SearchForm>
   );

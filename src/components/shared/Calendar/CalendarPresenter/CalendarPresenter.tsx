@@ -1,35 +1,15 @@
 import React from "react";
-import { useTranslation } from "../../../../context";
-import { CalendarEvent, CalendarpresenterProps } from "../types";
+import { CalendarEvents, CalendarPresenterProps } from "../types";
 import "./CalendarPresenter.scss";
+import DayPresenter from "./DayPresenter/DayPresenter";
 
 export default function CalendarPresenter({
   calendarEvents,
-  day,
-  date,
-}: CalendarpresenterProps) {
-  const { t } = useTranslation();
-
+}: CalendarPresenterProps) {
   const renderHours = (startTime: string, endTime: string) => (
     <div className="calendar__container__hours__field">
       <p>{startTime}</p>
       <p>{endTime}</p>
-    </div>
-  );
-
-  const renderBlock = (event: CalendarEvent, i: number) => (
-    <div
-      key={i}
-      className="block flex-center"
-      style={{
-        top: event.position,
-        height: event.height,
-        background: event.classTypeColor,
-      }}
-    >
-      <p className="title">{event.title}</p>
-      <p className="employee">{event.staff}</p>
-      <p className="time">{event.timeInfo}</p>
     </div>
   );
 
@@ -45,17 +25,9 @@ export default function CalendarPresenter({
         {renderHours("18:30", "20:00")}
         {renderHours("20:15", "21:45")}
       </div>
-      <div className="calendar__container__day">
-        <div className="calendar__container__day__name flex-center">
-          <p>{t(day)}</p>
-          <p>{t(date)}</p>
-        </div>
-        <div className="calendar__container__day__blocks">
-          {calendarEvents.map((event: CalendarEvent, i: number) =>
-            renderBlock(event, i)
-          )}
-        </div>
-      </div>
+      {calendarEvents.map((events: CalendarEvents, i: number) => (
+        <DayPresenter dailyProps={events} />
+      ))}
     </div>
   );
 }

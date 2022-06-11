@@ -29,7 +29,7 @@ export default function StaffPresenter({
           isThereCalendarEvents={calendarEvents ? true : false}
         />
       </div>
-      <CalendarContainer calendarEvents={calendarEvents} displayRoom={true} />
+      {/* <CalendarContainer calendarEvents={calendarEvents} displayRoom={true} /> */}
       <DialogContainer
         isOpen={isStaffInfoOpen && selectedEmployee ? true : false}
         toggleDialog={toggleStaffInfo}

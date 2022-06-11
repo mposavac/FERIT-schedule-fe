@@ -15,7 +15,7 @@ export interface RoomsFormProps {
 
 export interface RoomsPresenterProps {
   values: RoomsForm;
-  calendarEvents: CalendarEventsResponse | undefined;
+  calendarEvents: CalendarEventsResponse[] | undefined;
   handleFormChange(e: FormEvent<HTMLFormElement> | undefined): void;
   handleSearch(): void;
   toggleStatsOverlay(): void;

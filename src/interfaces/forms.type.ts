@@ -1,5 +1,6 @@
 export interface RoomsForm {
-  date: string;
+  startDate: string;
+  endDate: string;
   building: { text: string; value: string };
   room: { text: string; value: string };
 }
