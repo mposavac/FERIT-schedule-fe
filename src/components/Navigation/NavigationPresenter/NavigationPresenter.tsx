@@ -20,7 +20,9 @@ export default function NavigationPresenter({
   return (
     <div className="navigation__container">
       <div className="navigation__container__left flex-center">
-        <img src={mode === "light" ? feritLogo : feritLogoBijeli} alt="" />
+        <NavLink to="/">
+          <img src={mode === "light" ? feritLogo : feritLogoBijeli} alt="" />
+        </NavLink>
         <span />
         <div className="link__container">
           <NavLink to="prostorije">{t("navigation.rooms")}</NavLink>
