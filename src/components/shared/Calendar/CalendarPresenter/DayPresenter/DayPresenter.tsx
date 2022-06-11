@@ -8,7 +8,7 @@ export default function DayPresenter({ dailyProps }: DayPresenterProps) {
 
   const renderBlock = (event: CalendarEvent, i: number) => (
     <div
-      key={i}
+      key={"ceblock" + i}
       className="block flex-center"
       style={{
         top: event.position,

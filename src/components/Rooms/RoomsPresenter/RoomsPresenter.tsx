@@ -34,23 +34,16 @@ export default function RoomsPresenter({
             />
           </div>
         }
-        component2={
-          <>
-            <CalendarContainer calendarEvents={calendarEvents} />
-            <DialogContainer
-              isOpen={isStatsOpen}
-              toggleDialog={toggleStatsOverlay}
-              height={"70vh"}
-              width={"75%"}
-            >
-              {/*
-                <Statistics calendarEvents={calendarEvents} />
-            */}
-              <></>
-            </DialogContainer>
-          </>
-        }
+        component2={<CalendarContainer calendarEvents={calendarEvents} />}
       />
+      <DialogContainer
+        isOpen={isStatsOpen}
+        toggleDialog={toggleStatsOverlay}
+        height={"70vh"}
+        width={"75%"}
+      >
+        <Statistics calendarEvents={calendarEvents} />
+      </DialogContainer>
     </div>
   );
 }

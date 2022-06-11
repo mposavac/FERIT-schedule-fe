@@ -1,7 +1,5 @@
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "../../../../context";
-import { TimeSlots } from "../../../../interfaces/responses.type";
 import {
   StaffTimeSlotData,
   StatisticsProps,
@@ -9,7 +7,7 @@ import {
 } from "../../types";
 import { VictoryPie } from "victory";
 import ToggleButton from "../../../shared/ToggleButton/ToggleButton";
-import { capitalizeWords } from "../../../../utils/functions";
+import { calcPrecentage, calcStatsData } from "../../../../utils/functions";
 import "./Statistics.scss";
 
 export default function Statistics({ calendarEvents }: StatisticsProps) {
@@ -19,24 +17,14 @@ export default function Statistics({ calendarEvents }: StatisticsProps) {
 
   useEffect(() => {
     const calculateStatsData = () => {
-      const calcPrecentage = (value1: number, value2: number) => {
-        return parseFloat((value1 / value2).toFixed(2)) * 100;
-      };
+      if (calendarEvents) {
+        const timeWhenAvailable = 825 * calendarEvents.length;
 
-      if (calendarEvents && calendarEvents.timeSlots) {
-        const calendarEventsArr: TimeSlots[] = [...calendarEvents.timeSlots];
-        const timeWhenAvailable = 825;
         if (statsType === "availability") {
-          let busyHours = 0;
-          calendarEventsArr.forEach((value: TimeSlots) => {
-            const startTime = moment(value["pocetak"], "HH:mm");
-            const endTime = moment(value["kraj"], "HH:mm");
-            busyHours += endTime.diff(startTime, "minutes");
-          });
-          const roomUnvailable = calcPrecentage(busyHours, timeWhenAvailable);
-          const roomAvailable = calcPrecentage(
-            timeWhenAvailable - busyHours,
-            timeWhenAvailable
+          const [roomAvailable, roomUnvailable] = calcStatsData(
+            timeWhenAvailable,
+            calendarEvents,
+            statsType
           );
           const pieData = [
             {
@@ -52,38 +40,21 @@ export default function Statistics({ calendarEvents }: StatisticsProps) {
           ];
           setStatsData(pieData);
         } else if (statsType === "staff") {
-          const staffByRoom = Array.from(
-            calendarEventsArr
-              .map((value: TimeSlots) => {
-                const startTime = moment(value["pocetak"], "HH:mm");
-                const endTime = moment(value["kraj"], "HH:mm");
-                return {
-                  nastavnik:
-                    capitalizeWords(value.nastavnik["#text"]) || t("unknown"),
-                  slotDuration: Math.floor(endTime.diff(startTime, "minutes")),
-                };
-              })
-              .reduce(
-                (a, b) =>
-                  a.set(
-                    b.nastavnik,
-                    (a.get(b.nastavnik) || 0) + b.slotDuration
-                  ),
-                new Map()
-              )
-              .entries(),
-            (entry: any) => ({
-              nastavnik: entry[0],
-              slotDuration: entry[1],
-            })
+          const [staffRoomUsage, roomInUsageTime] = calcStatsData(
+            timeWhenAvailable,
+            calendarEvents,
+            "staff"
           );
-
-          const pieData = staffByRoom.map(
+          const pieData = staffRoomUsage.map(
             (value: StaffTimeSlotData, i: number) => {
+              const precentage = calcPrecentage(
+                value.slotDuration,
+                roomInUsageTime
+              );
               return {
                 x: i,
-                y: calcPrecentage(value.slotDuration, timeWhenAvailable),
-                label: value.nastavnik,
+                y: precentage,
+                label: `${value.nastavnik} ${precentage}%`,
               };
             }
           );
@@ -105,9 +76,6 @@ export default function Statistics({ calendarEvents }: StatisticsProps) {
           <VictoryPie
             data={statsData}
             colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
-            animate={{
-              duration: 200,
-            }}
           />
         )}
       </div>

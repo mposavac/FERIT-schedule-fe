@@ -26,7 +26,7 @@ export default function CalendarPresenter({
         {renderHours("20:15", "21:45")}
       </div>
       {calendarEvents.map((events: CalendarEvents, i: number) => (
-        <DayPresenter dailyProps={events} />
+        <DayPresenter key={i} dailyProps={events} />
       ))}
     </div>
   );

@@ -25,7 +25,7 @@ export interface RoomsPresenterProps {
 }
 
 export interface StatisticsProps {
-  calendarEvents: CalendarEventsResponse | undefined;
+  calendarEvents: CalendarEventsResponse[] | undefined;
 }
 
 export interface StatisticsData {
