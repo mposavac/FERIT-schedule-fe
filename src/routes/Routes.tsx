@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import LoginContainer from "../components/Auth/Login/LoginContainer/LoginContainer";
 import SignUpContainer from "../components/Auth/Signup/SignUpContainer/SignUpContainer";
+import HomeContainer from "../components/Home/HomeContainer/HomeContainer";
 import NavigationContainer from "../components/Navigation/NavigationContainer/NavigationContainer";
 import RoomsContainer from "../components/Rooms/RoomsContainer/RoomsContainer";
 import SchedulerContainer from "../components/Scheduler/SchedulerContainer/SchedulerContainer";
@@ -37,7 +38,14 @@ const Routes = () => {
       <Routing>
         <Route path="/login" element={<LoginContainer />} />
         <Route path="/signup" element={<SignUpContainer />} />
-        <Route path="/" element={<PrivateRoute></PrivateRoute>} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomeContainer />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/prostorije"
           element={

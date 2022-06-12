@@ -9,6 +9,7 @@ import hrFlag from "./hr.svg";
 import enFlag from "./en.svg";
 import deFlag from "./de.svg";
 import frFlag from "./fr.svg";
+import wavingHand from "./waving-hand.png";
 
 export {
   feritLogo,
@@ -22,4 +23,5 @@ export {
   enFlag,
   deFlag,
   frFlag,
+  wavingHand,
 };
