@@ -2,9 +2,9 @@ import React from "react";
 import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
 import DialogContainer from "../../shared/Dialog/DialogContainer/DialogContainer";
 import RoomsForm from "./RoomsForm/RoomsForm";
-import Statistics from "./Statistics/Statistics";
 import { RoomsPresenterProps } from "../types";
 import AnimationWrapper from "../../shared/AnimationWrapper/AnimationWrapper";
+import StatisticsContainer from "./Statistics/StatisticsContainer/StatisticsContainer";
 
 export default function RoomsPresenter({
   values,
@@ -42,7 +42,7 @@ export default function RoomsPresenter({
         height={"70vh"}
         width={"75%"}
       >
-        <Statistics calendarEvents={calendarEvents} />
+        <StatisticsContainer calendarEvents={calendarEvents} />
       </DialogContainer>
     </div>
   );

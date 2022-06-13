@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "../../../../context";
+import { useTranslation } from "../../../../../context";
+import { calcPrecentage, calcStatsData } from "../../../../../utils/functions";
 import {
   StaffTimeSlotData,
-  StatisticsProps,
+  StatisticsContainerProps,
   StatisticsData,
-} from "../../types";
-import { VictoryPie } from "victory";
-import ToggleButton from "../../../shared/ToggleButton/ToggleButton";
-import { calcPrecentage, calcStatsData } from "../../../../utils/functions";
-import "./Statistics.scss";
+} from "../../../types";
+import StatisticsPresenter from "../StatisticsPresenter/StatisticsPresenter";
 
-export default function Statistics({ calendarEvents }: StatisticsProps) {
+export default function StatisticsContainer({
+  calendarEvents,
+}: StatisticsContainerProps) {
   const [statsData, setStatsData] = useState<StatisticsData[]>([]);
   const [statsType, setStatsType] = useState<string>("availability");
   const { t } = useTranslation();
@@ -38,6 +38,7 @@ export default function Statistics({ calendarEvents }: StatisticsProps) {
               label: `${t("chart.available")} ${roomAvailable}%`,
             },
           ];
+          pieData.sort((a, b) => a.y - b.y);
           setStatsData(pieData);
         } else if (statsType === "staff") {
           const [staffRoomUsage, roomInUsageTime] = calcStatsData(
@@ -58,6 +59,7 @@ export default function Statistics({ calendarEvents }: StatisticsProps) {
               };
             }
           );
+          pieData.sort((a: any, b: any) => a.y - b.y);
           setStatsData(pieData);
         }
       }
@@ -70,21 +72,10 @@ export default function Statistics({ calendarEvents }: StatisticsProps) {
   };
 
   return (
-    <div className="dialog__wrapper__container__content flex-center">
-      <div className="dialog__wrapper__container__content__pie__container">
-        {statsData && (
-          <VictoryPie
-            data={statsData}
-            colorScale={["tomato", "orange", "gold", "cyan", "navy"]}
-          />
-        )}
-      </div>
-      <ToggleButton
-        value={statsType}
-        option1="availability"
-        option2="staff"
-        toggleOption={toggleStatsType}
-      />
-    </div>
+    <StatisticsPresenter
+      statsData={statsData}
+      statsType={statsType}
+      toggleStatsType={toggleStatsType}
+    />
   );
 }
