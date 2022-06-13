@@ -1,5 +1,6 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 import CalendarPresenter from "../CalendarPresenter/CalendarPresenter";
 import { CalendarContainerProps, CalendarEvents } from "../types";
 
@@ -8,6 +9,9 @@ export default function CalendarContainer({
   displayRoom,
 }: CalendarContainerProps) {
   const [events, setEvents] = useState<CalendarEvents[]>();
+  const [chunkSize, setChunkSize] = useState(events?.length || 0);
+  const [transformOffset, setTransformOffset] = useState(0);
+  const width = useWindowSize();
 
   const getClassTypeColor = (type: string) => {
     switch (type) {
@@ -42,15 +46,12 @@ export default function CalendarContainer({
           return {
             title:
               displayRoom && event?.prostorija["#text"]
-                ? event.predmet["#text"] +
-                  " (" +
-                  event?.prostorija["#text"] +
-                  ")"
-                : event.predmet["#text"],
+                ? `${event?.predmet["#text"]} (${event?.prostorija["#text"]})`
+                : event?.predmet["#text"],
             staff: event.nastavnik["#text"],
             timeInfo:
               startTime.format("HH:mm") + " - " + endTime.format("HH:mm"),
-            classTypeColor: getClassTypeColor(event.vrstanastave["@tip"]),
+            classTypeColor: getClassTypeColor(event?.vrstanastave["@tip"]),
             position,
             height,
           };
@@ -61,8 +62,31 @@ export default function CalendarContainer({
     }
   }, [calendarEvents, displayRoom]);
 
+  useEffect(() => {
+    if (events) {
+      setChunkSize(Math.floor((width - 120) / 265));
+      setTransformOffset(0);
+    }
+  }, [width, events]);
+
+  const handleCalendarMove = (direction: string) => {
+    if (
+      direction === "right" &&
+      events &&
+      events?.length * 265 >= transformOffset * -1 + chunkSize * 265
+    )
+      setTransformOffset(transformOffset - chunkSize * 265);
+    else if (direction === "left" && transformOffset < 0)
+      setTransformOffset(transformOffset + chunkSize * 265);
+  };
+
   return calendarEvents && events ? (
-    <CalendarPresenter calendarEvents={events} />
+    <CalendarPresenter
+      calendarEvents={events}
+      chunkSize={chunkSize}
+      transformOffset={transformOffset}
+      handleCalendarMove={handleCalendarMove}
+    />
   ) : (
     <></>
   );

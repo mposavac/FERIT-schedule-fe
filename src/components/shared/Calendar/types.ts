@@ -7,6 +7,9 @@ export interface CalendarContainerProps {
 
 export interface CalendarPresenterProps {
   calendarEvents: CalendarEvents[];
+  chunkSize: number;
+  transformOffset: number;
+  handleCalendarMove(direction: string): void;
 }
 
 export interface DayPresenterProps {

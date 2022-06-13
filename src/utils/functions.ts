@@ -23,7 +23,8 @@ export const capitalizeWords = (str: string): string | undefined | null => {
 };
 
 export const calcPrecentage = (value1: number, value2: number) => {
-  return parseFloat((value1 / value2).toFixed(2)) * 100;
+  const num = (value1 / value2) * 100;
+  return Math.round(num);
 };
 
 export const calcStatsData = (

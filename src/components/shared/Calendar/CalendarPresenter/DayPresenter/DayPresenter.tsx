@@ -23,12 +23,12 @@ export default function DayPresenter({ dailyProps }: DayPresenterProps) {
   );
 
   return (
-    <div className="calendar__container__day">
-      <div className="calendar__container__day__name flex-center">
+    <div className="calendar__container__content__day">
+      <div className="calendar__container__content__day__name flex-center">
         <p>{t(moment(dailyProps.date).format("dddd"))}</p>
         <p>{moment(dailyProps.date).format("DD.MM.YYYY.")}</p>
       </div>
-      <div className="calendar__container__day__blocks">
+      <div className="calendar__container__content__day__blocks">
         {dailyProps.events.map((event: CalendarEvent, i: number) =>
           renderBlock(event, i)
         )}
