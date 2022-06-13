@@ -8,7 +8,7 @@ import { InputSelectOption } from "../shared/InputSelect/types";
 
 export interface StaffPresenterProps {
   values: StaffForm;
-  calendarEvents: CalendarEventsResponse | undefined;
+  calendarEvents: CalendarEventsResponse[] | undefined;
   handleFormChange(e: FormEvent<HTMLFormElement> | undefined): void;
   handleSearch(): void;
   toggleStaffInfo(): void;

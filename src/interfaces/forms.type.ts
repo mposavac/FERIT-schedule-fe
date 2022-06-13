@@ -6,7 +6,8 @@ export interface RoomsForm {
 }
 
 export interface StaffForm {
-  date: string;
+  startDate: string;
+  endDate: string;
   employee: { text: string; value: string };
 }
 
