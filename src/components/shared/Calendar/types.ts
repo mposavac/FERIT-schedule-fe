@@ -3,6 +3,7 @@ import { CalendarEventsResponse } from "../../../interfaces/responses.type";
 export interface CalendarContainerProps {
   calendarEvents: CalendarEventsResponse[] | undefined;
   displayRoom?: boolean;
+  singleDayView?: boolean;
 }
 
 export interface CalendarPresenterProps {
@@ -10,6 +11,7 @@ export interface CalendarPresenterProps {
   chunkSize: number;
   transformOffset: number;
   handleCalendarMove(direction: string): void;
+  singleDayView?: boolean;
 }
 
 export interface DayPresenterProps {

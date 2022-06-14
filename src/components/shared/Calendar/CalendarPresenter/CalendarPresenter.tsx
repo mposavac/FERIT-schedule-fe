@@ -9,6 +9,7 @@ export default function CalendarPresenter({
   chunkSize,
   transformOffset,
   handleCalendarMove,
+  singleDayView,
 }: CalendarPresenterProps) {
   const renderHours = (startTime: string, endTime: string) => (
     <div className="calendar__container__content__hours__field">
@@ -19,25 +20,27 @@ export default function CalendarPresenter({
 
   return (
     <div className="calendar__container">
-      <div className="calendar__container__navigation">
-        <img
-          className={`left ${transformOffset === 0 ? "disabled" : ""}`}
-          src={arrowIcon}
-          alt="arrow"
-          onClick={() => handleCalendarMove("left")}
-        />
-        <img
-          className={`right ${
-            calendarEvents?.length * 265 <
-            transformOffset * -1 + chunkSize * 265
-              ? "disabled"
-              : ""
-          }`}
-          src={arrowIcon}
-          alt="arrow"
-          onClick={() => handleCalendarMove("right")}
-        />
-      </div>
+      {!singleDayView && (
+        <div className="calendar__container__navigation">
+          <img
+            className={`left ${transformOffset === 0 ? "disabled" : ""}`}
+            src={arrowIcon}
+            alt="arrow"
+            onClick={() => handleCalendarMove("left")}
+          />
+          <img
+            className={`right ${
+              calendarEvents?.length * 265 <
+              transformOffset * -1 + chunkSize * 265
+                ? "disabled"
+                : ""
+            }`}
+            src={arrowIcon}
+            alt="arrow"
+            onClick={() => handleCalendarMove("right")}
+          />
+        </div>
+      )}
       <div className="calendar__container__content">
         <div className="calendar__container__content__hours">
           {renderHours("8:00", "9:30")}
@@ -51,7 +54,7 @@ export default function CalendarPresenter({
         </div>
         <div
           className="calendar__container__content__days__wrapper__outer"
-          style={{ width: `${chunkSize * 265 - 15}px` }}
+          style={{ width: `${singleDayView ? 265 : chunkSize * 265 - 15}px` }}
         >
           <div
             className="calendar__container__content__days__wrapper__inner"

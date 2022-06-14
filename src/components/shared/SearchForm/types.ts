@@ -1,4 +1,4 @@
-import { FormEvent, ReactElement } from "react";
+import { FormEvent, InputHTMLAttributes, ReactElement } from "react";
 
 export interface SearchFormProps {
   searchText: string;
@@ -10,10 +10,10 @@ export interface SearchFormProps {
   children?: ReactElement;
 }
 
-export interface InputFieldProps {
+export interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   customField?: ReactElement;
   type?: string;
   value?: any;
-  onChange?(e: FormEvent<HTMLFormElement> | undefined): void;
+  handleChange?(e: FormEvent<HTMLFormElement> | undefined): void;
 }

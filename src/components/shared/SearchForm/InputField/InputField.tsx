@@ -6,8 +6,9 @@ export default function InputField({
   name,
   type,
   value,
-  onChange,
+  handleChange,
   customField,
+  ...props
 }: InputFieldProps) {
   const { t } = useTranslation();
   return (
@@ -24,7 +25,8 @@ export default function InputField({
             type={type}
             name={name}
             value={value}
-            onChange={onChange ? (e: any) => onChange(e) : undefined}
+            onChange={handleChange ? (e: any) => handleChange(e) : undefined}
+            {...props}
           />
         </>
       )}

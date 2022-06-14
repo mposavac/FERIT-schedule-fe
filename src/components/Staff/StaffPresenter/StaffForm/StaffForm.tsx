@@ -31,13 +31,13 @@ export default function StaffForm({
           name="startDate"
           type="date"
           value={values.startDate}
-          onChange={handleFormChange}
+          handleChange={handleFormChange}
         />
         <InputField
           name="endDate"
           type="date"
           value={values.endDate}
-          onChange={handleFormChange}
+          handleChange={handleFormChange}
         />
         <InputField
           name="employee"

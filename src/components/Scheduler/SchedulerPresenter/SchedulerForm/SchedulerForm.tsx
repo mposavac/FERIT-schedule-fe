@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "../../../../context";
+import InputField from "../../../shared/SearchForm/InputField/InputField";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
 import { SchedulerFormProps } from "../../types";
 
@@ -8,7 +8,6 @@ export default function SchedulerForm({
   handleFormChange,
   handleSearch,
 }: SchedulerFormProps) {
-  const { t } = useTranslation();
   return (
     <SearchForm
       searchText={"form.scheduler"}
@@ -17,34 +16,25 @@ export default function SchedulerForm({
       handleSearch={handleSearch}
     >
       <>
-        <div className="search__form__container__content__field">
-          <label>{t("form.startTime")}</label>
-          <input
-            type="time"
-            name="startTime"
-            value={values.startTime}
-            onChange={(e: any) => handleFormChange(e)}
-          />
-        </div>
-        <div className="search__form__container__content__field">
-          <label>{t("form.endTime")}</label>
-          <input
-            type="time"
-            name="endTime"
-            value={values.endTime}
-            onChange={(e: any) => handleFormChange(e)}
-          />
-        </div>
-        <div className="search__form__container__content__field">
-          <label>{t("form.capacity")}</label>
-          <input
-            type="number"
-            name="capacity"
-            min={1}
-            value={values.capacity}
-            onChange={(e: any) => handleFormChange(e)}
-          />
-        </div>
+        <InputField
+          name="startTime"
+          type="time"
+          value={values.startTime}
+          handleChange={handleFormChange}
+        />
+        <InputField
+          name="endTime"
+          type="time"
+          value={values.endTime}
+          handleChange={handleFormChange}
+        />
+        <InputField
+          name="capacity"
+          type="number"
+          value={values.capacity}
+          handleChange={handleFormChange}
+          min={1}
+        />
       </>
     </SearchForm>
   );

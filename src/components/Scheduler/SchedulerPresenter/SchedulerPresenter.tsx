@@ -41,12 +41,15 @@ export default function SchedulerPresenter({
                 <div className="scheduler__container__calendar__wrapper__container__title flex-center">
                   <h3>{el.name}</h3>
                 </div>
-                {/*                <CalendarContainer
-                  calendarEvents={{
-                    date: el.date,
-                    timeSlots: el.unavailableSlots || [],
-                  }}
-                /> */}
+                <CalendarContainer
+                  calendarEvents={[
+                    {
+                      date: el.date,
+                      timeSlots: el.unavailableSlots || [],
+                    },
+                  ]}
+                  singleDayView={true}
+                />
               </div>
             ))}
           </div>

@@ -7,6 +7,7 @@ import { CalendarContainerProps, CalendarEvents } from "../types";
 export default function CalendarContainer({
   calendarEvents,
   displayRoom,
+  singleDayView,
 }: CalendarContainerProps) {
   const [events, setEvents] = useState<CalendarEvents[]>();
   const [chunkSize, setChunkSize] = useState(events?.length || 0);
@@ -86,6 +87,7 @@ export default function CalendarContainer({
       chunkSize={chunkSize}
       transformOffset={transformOffset}
       handleCalendarMove={handleCalendarMove}
+      singleDayView={singleDayView}
     />
   ) : (
     <></>
