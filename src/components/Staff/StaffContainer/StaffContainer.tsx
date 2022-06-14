@@ -9,12 +9,14 @@ import { searchSchema } from "../../../schemas";
 import { InputSelectOption } from "../../shared/InputSelect/types";
 import StaffPresenter from "../StaffPresenter/StaffPresenter";
 import { StaffForm } from "../../../interfaces/forms.type";
+import moment from "moment";
 
 export default function StaffContainer() {
   const today = new Date().toISOString();
   const [values, handleChange, validateForm] = useForm<StaffForm>(
     {
-      date: today.substring(0, today.indexOf("T")),
+      startDate: today.substring(0, today.indexOf("T")),
+      endDate: moment(today).add(5, "days").format("YYYY-MM-DD"),
       employee: { value: "", text: "" },
     },
     searchSchema
@@ -23,8 +25,8 @@ export default function StaffContainer() {
     "/staff/list",
     true
   );
-  const { data, submit } = useAxios<CalendarEventsResponse>(
-    `/staff/availability/${values.date}/${values.employee.value}`
+  const { data, submit } = useAxios<CalendarEventsResponse[]>(
+    `/staff/availability/${values.startDate}/${values.endDate}/${values.employee.value}`
   );
   const [staffOptions, setStaffsOptions] = useState<InputSelectOption[]>([]);
   const [selectedEmployee, setSelectedEmployee] =

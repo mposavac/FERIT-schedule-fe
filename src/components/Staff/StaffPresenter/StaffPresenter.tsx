@@ -5,6 +5,7 @@ import "./StaffPresenter.scss";
 import CalendarContainer from "../../shared/Calendar/CalendarContainer/CalendarContainer";
 import DialogContainer from "../../shared/Dialog/DialogContainer/DialogContainer";
 import { useTranslation } from "../../../context";
+import AnimationWrapper from "../../shared/AnimationWrapper/AnimationWrapper";
 
 export default function StaffPresenter({
   values,
@@ -19,17 +20,29 @@ export default function StaffPresenter({
   const { t } = useTranslation();
   return (
     <div className="page__wrapper">
-      <div className="staff__form__container">
-        <StaffForm
-          values={values}
-          handleFormChange={handleFormChange}
-          handleSearch={handleSearch}
-          staffOptions={staffOptions}
-          toggleStaffInfo={toggleStaffInfo}
-          isThereCalendarEvents={calendarEvents ? true : false}
-        />
-      </div>
-      <CalendarContainer calendarEvents={calendarEvents} displayRoom={true} />
+      <AnimationWrapper
+        options={["search", "results"]}
+        searchResults={calendarEvents}
+        component1={
+          <div className="staff__form__container">
+            <StaffForm
+              values={values}
+              handleFormChange={handleFormChange}
+              handleSearch={handleSearch}
+              staffOptions={staffOptions}
+              toggleStaffInfo={toggleStaffInfo}
+              isThereCalendarEvents={calendarEvents ? true : false}
+            />
+          </div>
+        }
+        component2={
+          <CalendarContainer
+            calendarEvents={calendarEvents}
+            displayRoom={true}
+          />
+        }
+      />
+
       <DialogContainer
         isOpen={isStaffInfoOpen && selectedEmployee ? true : false}
         toggleDialog={toggleStaffInfo}

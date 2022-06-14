@@ -15,7 +15,7 @@ export interface RoomsFormProps {
 
 export interface RoomsPresenterProps {
   values: RoomsForm;
-  calendarEvents: CalendarEventsResponse | undefined;
+  calendarEvents: CalendarEventsResponse[] | undefined;
   handleFormChange(e: FormEvent<HTMLFormElement> | undefined): void;
   handleSearch(): void;
   toggleStatsOverlay(): void;
@@ -24,8 +24,14 @@ export interface RoomsPresenterProps {
   roomsOptions: InputSelectOption[];
 }
 
-export interface StatisticsProps {
-  calendarEvents: CalendarEventsResponse | undefined;
+export interface StatisticsContainerProps {
+  calendarEvents: CalendarEventsResponse[] | undefined;
+}
+
+export interface StatisticsPresenterProps {
+  statsData: StatisticsData[];
+  statsType: string;
+  toggleStatsType(type: string): void;
 }
 
 export interface StatisticsData {

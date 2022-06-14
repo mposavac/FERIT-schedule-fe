@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
 import { useAxios } from "../../../hooks/useAxios";
 import { useForm } from "../../../hooks/useForm";
@@ -17,9 +17,6 @@ export default function SchedulerContainer() {
     },
     searchSchema
   );
-  const [displayOption, setDisplayOption] = useState("search");
-  const [renderResults, setRenderResults] = useState(false);
-  const [renderSearch, setRenderSearch] = useState(true);
   const { data, submit } = useAxios<any>(`/scheduler/availability`);
 
   const handleFormChange = (e: any) => {
@@ -27,31 +24,13 @@ export default function SchedulerContainer() {
     } else handleChange(e);
   };
   const handleSearch = () => {
-    submit(validateForm, values, "post", () => setDisplayOption("results"));
-  };
-
-  const toggleDisplayOption = () => {
-    setDisplayOption(displayOption === "search" ? "results" : "search");
-  };
-
-  const handleRendering = () => {
-    if (displayOption === "search") {
-      setRenderResults(false);
-      setRenderSearch(true);
-    } else if (displayOption === "results") {
-      setRenderResults(true);
-      setRenderSearch(false);
-    }
+    submit(validateForm, values, "post");
   };
 
   return (
     <SchedulerPresenter
       values={values}
       availability={data}
-      displayOption={displayOption}
-      render={{ renderResults, renderSearch }}
-      handleRendering={handleRendering}
-      toggleDisplayOption={toggleDisplayOption}
       handleFormChange={handleFormChange}
       handleSearch={handleSearch}
     />

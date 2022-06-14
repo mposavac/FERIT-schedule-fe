@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "../../../../context";
 import { InputSelect } from "../../../shared/InputSelect/InputSelectContatiner/InputSelectContainer";
+import InputField from "../../../shared/SearchForm/InputField/InputField";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
 import { StaffFormProps } from "../../types";
 
@@ -16,8 +17,6 @@ export default function StaffForm({
   return (
     <SearchForm
       searchText={"form.staff"}
-      date={values.date}
-      handleFormChange={handleFormChange}
       handleSearch={handleSearch}
       additionalButtons={
         isThereCalendarEvents ? (
@@ -27,16 +26,32 @@ export default function StaffForm({
         )
       }
     >
-      <div className="search__form__container__content__field">
-        <label>{t("form.employee")}</label>
-        <InputSelect
-          name="employee"
-          selectedOption={values.employee}
-          optionsList={staffOptions}
-          onChange={handleFormChange}
-          searchable={true}
+      <>
+        <InputField
+          name="startDate"
+          type="date"
+          value={values.startDate}
+          handleChange={handleFormChange}
         />
-      </div>
+        <InputField
+          name="endDate"
+          type="date"
+          value={values.endDate}
+          handleChange={handleFormChange}
+        />
+        <InputField
+          name="employee"
+          customField={
+            <InputSelect
+              name="employee"
+              selectedOption={values.employee}
+              optionsList={staffOptions}
+              onChange={handleFormChange}
+              searchable={true}
+            />
+          }
+        />
+      </>
     </SearchForm>
   );
 }
