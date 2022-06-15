@@ -11,6 +11,8 @@ import deFlag from "./de.svg";
 import frFlag from "./fr.svg";
 import wavingHand from "./waving-hand.png";
 import statsIcon from "./pie-chart.png";
+import paswdIcon from "./padlock.png";
+import userIcon from "./user.png";
 
 export {
   feritLogo,
@@ -26,4 +28,6 @@ export {
   frFlag,
   wavingHand,
   statsIcon,
+  paswdIcon,
+  userIcon,
 };

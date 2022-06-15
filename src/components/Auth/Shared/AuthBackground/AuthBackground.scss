@@ -30,18 +30,30 @@
           label {
             padding-bottom: 5px;
           }
-          input {
-            font-size: 20px;
+          div {
             height: 50px;
-            width: 300px;
+            position: relative;
             margin-bottom: 25px;
-            padding: 5px 15px;
-            border: rgba($color-grey-dark, 0.3) 1px solid;
-            border-radius: 4px;
-            transition: 300ms;
-            &:focus {
-              border: $color-ferit-blue 1px solid;
-              box-shadow: inset 0px 0px 1px 0px;
+            img {
+              position: absolute;
+              left: 25px;
+              height: 20px;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+            input {
+              font-size: 20px;
+              height: 50px;
+              width: 300px;
+              margin-bottom: 25px;
+              padding: 5px 15px 5px 40px;
+              border: rgba($color-grey-dark, 0.3) 1px solid;
+              border-radius: 4px;
+              transition: 300ms;
+              &:focus {
+                border: $color-ferit-blue 1px solid;
+                box-shadow: inset 0px 0px 1px 0px;
+              }
             }
           }
         }
@@ -52,7 +64,9 @@
           margin-top: 25px;
           background-color: #fff;
           border: $color-ferit-blue 1px solid;
+          border-radius: 5px;
           color: $color-ferit-blue;
+          font-weight: bold;
           cursor: pointer;
           transition: 300ms;
           &:hover {
