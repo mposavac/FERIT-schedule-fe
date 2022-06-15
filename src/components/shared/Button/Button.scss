@@ -1,0 +1,29 @@
+@import "../../../styles/common";
+
+.button {
+  background: #fff;
+  color: $color-ferit-blue;
+  border: 1px solid $color-ferit-blue;
+  border-radius: 5px;
+  min-width: 60px;
+  height: 30px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 250ms;
+  img {
+    opacity: 0.5;
+    width: 15px;
+    margin: 0 5px;
+  }
+  p {
+    font-weight: bold;
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  &:hover {
+    color: $color-ferit-red-light;
+  }
+}

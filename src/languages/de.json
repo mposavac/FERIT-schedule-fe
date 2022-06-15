@@ -67,6 +67,7 @@
     "err.required.startTime": "Startzeit ist erforderlich!",
     "err.required.endTime": "Endzeit ist erforderlich!",
     "err.invalid.time": "Bitte überprüfen Sie die Zeitfelder!",
+    "err.invalid.date": "Bitte überprüfen Sie die Datumsfelder!!",
     "err.required.capacity": "Kapazität ist erforderlich!",
     "err.min.value.capacity": "Mindestkapazität ist 1!",
     "unknown": "Unbekannt"

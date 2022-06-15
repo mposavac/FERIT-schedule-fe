@@ -67,6 +67,7 @@
     "err.required.startTime": "Početno vrijeme je obavezno!",
     "err.required.endTime": "Vrijeme završetka je obavezno!",
     "err.invalid.time": "Provjerite uneseno vrijeme!",
+    "err.invalid.date": "Provjerite datume!",
     "err.required.capacity": "Unesite željeni kapacitet!",
     "err.min.value.capacity": "Minimalni kapacitet je 1!",
     "unknown": "Nepoznato"

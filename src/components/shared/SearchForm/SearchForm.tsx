@@ -2,6 +2,8 @@ import React from "react";
 import { useTranslation } from "../../../context";
 import { SearchFormProps } from "./types";
 import "./SearchForm.scss";
+import { searchIcon } from "../../../styles/assets/images";
+import Button from "../Button/Button";
 
 export default function SearchForm({
   searchText,
@@ -29,7 +31,7 @@ export default function SearchForm({
         <></>
       )}
       {children}
-      <button onClick={handleSearch}>{t("search")}</button>
+      <Button text="search" icon={searchIcon} onClick={handleSearch} />
       {additionalButtons}
     </div>
   );

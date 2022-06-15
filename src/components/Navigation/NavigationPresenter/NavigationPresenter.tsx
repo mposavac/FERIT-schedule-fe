@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useTranslation } from "../../../context";
-
 import {
   feritLogo,
   feritLogoBijeli,
