@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "../../../../context";
-import { emailIcon, paswdIcon } from "../../../../styles/assets/images";
+import { emailIcon } from "../../../../styles/assets/images";
+import PasswordInputField from "../../Shared/PasswordInputField/PasswordInputField";
 import { LoginPresenterProps } from "../types";
 
 export default function LoginPresenter({
@@ -15,7 +16,7 @@ export default function LoginPresenter({
       <div className="inputs__container">
         <label htmlFor="email">{t("e-mail")}</label>
         <div>
-          <img src={emailIcon} alt="email" />
+          <img className="field__icon" src={emailIcon} alt="email" />
           <input
             id="email"
             name="email"
@@ -24,17 +25,10 @@ export default function LoginPresenter({
             onChange={handleChange}
           />
         </div>
-        <label htmlFor="password">{t("password")}</label>
-        <div>
-          <img src={paswdIcon} alt="password" />
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-        </div>
+        <PasswordInputField
+          password={values.password}
+          handleChange={handleChange}
+        />
       </div>
       <button>{t("login")}</button>
     </form>

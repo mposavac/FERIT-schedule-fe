@@ -31,7 +31,7 @@ export default function NavigationPresenter({
         </div>
         <span />
         <div className="link__container">
-          <NavLink to="kalendar">{t("navigation.calendar")}</NavLink>
+          <NavLink to="planer">{t("navigation.scheduler")}</NavLink>
         </div>
         <span />
       </div>

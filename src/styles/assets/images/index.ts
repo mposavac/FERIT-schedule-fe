@@ -13,6 +13,7 @@ import wavingHand from "./waving-hand.png";
 import statsIcon from "./pie-chart.png";
 import paswdIcon from "./padlock.png";
 import userIcon from "./user.png";
+import visibleIcon from "./visibility.png";
 
 export {
   feritLogo,
@@ -30,4 +31,5 @@ export {
   statsIcon,
   paswdIcon,
   userIcon,
+  visibleIcon,
 };
