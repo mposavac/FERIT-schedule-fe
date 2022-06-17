@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { includes } from "lodash";
 import InputSelectPresenter from "../InputSelectPresenter/InputSelectPresenter";
 import { InputSelectContainerProps, InputSelectOption } from "../types";
+import { useOutsideClick } from "../../../../hooks/useOutsideClick";
 
 const InputSelectContainer = ({
   name,
@@ -18,6 +19,9 @@ const InputSelectContainer = ({
     []
   );
   const inputRef = useRef<HTMLInputElement>();
+  const wrapperRef = useOutsideClick(() => {
+    setToggleOpen(false);
+  });
 
   const handleOptionClick = (e: any) => {
     const option = JSON.parse(e.target.getAttribute("data-name"));
@@ -64,6 +68,7 @@ const InputSelectContainer = ({
       handleSearch={handleSearch}
       handleOptionClick={handleOptionClick}
       handleOpenOptions={handleOpenOptions}
+      wrapperRef={wrapperRef}
       disabled={disabled}
       searchable={searchable}
     />

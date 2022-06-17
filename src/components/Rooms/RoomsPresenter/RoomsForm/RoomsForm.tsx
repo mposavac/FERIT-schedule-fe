@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { useTranslation } from "../../../../context";
+import { statsIcon } from "../../../../styles/assets/images";
+import Button from "../../../shared/Button/Button";
 import { InputSelect } from "../../../shared/InputSelect/InputSelectContatiner/InputSelectContainer";
 import InputField from "../../../shared/SearchForm/InputField/InputField";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
@@ -14,14 +15,17 @@ export default function RoomsFormPresenter({
   isThereCalendarEvents,
   toggleStatsOverlay,
 }: RoomsFormProps) {
-  const { t } = useTranslation();
   return (
     <SearchForm
       searchText={"form.rooms"}
       handleSearch={handleSearch}
       additionalButtons={
         isThereCalendarEvents ? (
-          <button onClick={toggleStatsOverlay}>{t("button.statistics")}</button>
+          <Button
+            text="button.statistics"
+            icon={statsIcon}
+            onClick={toggleStatsOverlay}
+          />
         ) : (
           <></>
         )

@@ -15,10 +15,14 @@ export default function InputSelectPresenter({
   handleOpenOptions,
   disabled,
   searchable,
+  wrapperRef,
 }: InputSelectPresenterProps) {
   const { t } = useTranslation();
   return (
-    <div className={`input__select__container${disabled ? " disabled" : ""}`}>
+    <div
+      ref={wrapperRef}
+      className={`input__select__container${disabled ? " disabled" : ""}`}
+    >
       <div
         className="input__select__container__selected"
         onClick={handleOpenOptions}

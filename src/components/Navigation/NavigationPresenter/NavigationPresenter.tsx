@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useTranslation } from "../../../context";
-
 import {
   feritLogo,
   feritLogoBijeli,
@@ -33,7 +31,7 @@ export default function NavigationPresenter({
         </div>
         <span />
         <div className="link__container">
-          <NavLink to="kalendar">{t("navigation.calendar")}</NavLink>
+          <NavLink to="planer">{t("navigation.scheduler")}</NavLink>
         </div>
         <span />
       </div>

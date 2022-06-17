@@ -67,6 +67,20 @@ export const useValidation = (validationSchema: any) => {
         )
           return validationSchema?.[key]?.isTime?.err;
       }
+      if (validationSchema?.[key]?.isDate) {
+        const operator = validationSchema?.[key]?.isDate?.compareIfIs;
+        const comapreToKey = validationSchema?.[key]?.isDate?.compareTo;
+        const compareTo =
+          (values as any)?.[comapreToKey]?.value !== undefined
+            ? (values as any)?.[comapreToKey]?.value
+            : (values as any)?.[comapreToKey];
+        if (!moment(value).isSame(moment(compareTo))) {
+          if (operator === "higher" && moment(value).isAfter(moment(compareTo)))
+            return validationSchema?.[key]?.isDate?.err;
+          if (operator === "lower" && moment(value).isBefore(moment(compareTo)))
+            return validationSchema?.[key]?.isDate?.err;
+        }
+      }
     }
     return "";
   };

@@ -71,7 +71,7 @@ const Routes = () => {
           }
         />
         <Route
-          path="/kalendar"
+          path="/planer"
           element={
             <PrivateRoute>
               <SchedulerContainer />

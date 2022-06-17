@@ -3,6 +3,14 @@
     "date": {
         "isRequired": { "err": "err.required.date" }
     },
+    "startDate": {
+        "isRequired": { "err": "err.required.date" },
+        "isDate": { "compareTo": "endDate", "compareIfIs": "higher", "err": "err.invalid.date"}
+    },
+    "endDate": {
+        "isRequired": { "err": "err.required.date" },
+        "isDate": { "compareTo": "startDate", "compareIfIs": "lower", "err": "err.invalid.date"}
+    },
     "building": {
         "isRequired": { "err": "err.required.building" }
     },

@@ -1,3 +1,5 @@
+import { Ref } from "react";
+
 export interface InputSelectOption {
   text: string;
   value: string;
@@ -8,10 +10,11 @@ export interface InputSelectPresenterProps {
   selectedOption: InputSelectOption;
   toggleOpen: boolean;
   search: string;
-  inputRef: any;
+  inputRef: Ref<any>;
   handleSearch: (e: any) => void;
   handleOptionClick: (e: any) => void;
   handleOpenOptions: () => void;
+  wrapperRef: Ref<any>;
   disabled?: boolean;
   searchable?: boolean;
 }

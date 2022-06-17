@@ -9,7 +9,7 @@
     "search": "Search",
     "navigation.rooms": "Rooms",
     "navigation.staff": "Staff",
-    "navigation.calendar": "Calendar",
+    "navigation.scheduler": "Scheduler",
     "login.account.create.text": "Don't have an account yet?",
     "login.account.create.link": "Create an account.",
     "signup.account.create.text": "Alreagy have an account?",
@@ -67,6 +67,7 @@
     "err.required.startTime": "Start Time is required!",
     "err.required.endTime": "End Time is required!",
     "err.invalid.time": "Please check the time fields!",
+    "err.invalid.date": "Please check the date fields!",
     "err.required.capacity": "Capacity is required!",
     "err.min.value.capacity": "Minimal Capacity is 1!",
     "unknown": "Unknown"

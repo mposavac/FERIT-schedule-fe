@@ -9,7 +9,7 @@
     "search": "Suche",
     "navigation.rooms": "Räume",
     "navigation.staff": "Mitarbeiter",
-    "navigation.calendar": "Calendar",
+    "navigation.scheduler": "Planer",
     "login.account.create.text": "Sie haben noch kein Konto?",
     "login.account.create.link": "Ein Konto erstellen.",
     "signup.account.create.text": "Sie haben bereits ein Konto?",
@@ -67,6 +67,7 @@
     "err.required.startTime": "Startzeit ist erforderlich!",
     "err.required.endTime": "Endzeit ist erforderlich!",
     "err.invalid.time": "Bitte überprüfen Sie die Zeitfelder!",
+    "err.invalid.date": "Bitte überprüfen Sie die Datumsfelder!!",
     "err.required.capacity": "Kapazität ist erforderlich!",
     "err.min.value.capacity": "Mindestkapazität ist 1!",
     "unknown": "Unbekannt"

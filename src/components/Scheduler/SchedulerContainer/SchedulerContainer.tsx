@@ -11,8 +11,12 @@ export default function SchedulerContainer() {
   const [values, handleChange, validateForm] = useForm<SchedulerForm>(
     {
       date: today.toISOString().substring(0, today.toISOString().indexOf("T")),
-      startTime: moment(today).format("HH:mm"),
-      endTime: moment(today).add(1, "hour").format("HH:mm"),
+      startTime: moment(today).startOf("hour").format("HH:mm"),
+      endTime: moment(today)
+        .startOf("hour")
+        .add(1, "hour")
+        .add("30", "minutes")
+        .format("HH:mm"),
       capacity: 1,
     },
     searchSchema

@@ -1,5 +1,6 @@
 import React from "react";
-import { useTranslation } from "../../../../context";
+import { userIcon } from "../../../../styles/assets/images";
+import Button from "../../../shared/Button/Button";
 import { InputSelect } from "../../../shared/InputSelect/InputSelectContatiner/InputSelectContainer";
 import InputField from "../../../shared/SearchForm/InputField/InputField";
 import SearchForm from "../../../shared/SearchForm/SearchForm";
@@ -13,14 +14,17 @@ export default function StaffForm({
   toggleStaffInfo,
   isThereCalendarEvents,
 }: StaffFormProps) {
-  const { t } = useTranslation();
   return (
     <SearchForm
       searchText={"form.staff"}
       handleSearch={handleSearch}
       additionalButtons={
         isThereCalendarEvents ? (
-          <button onClick={toggleStaffInfo}>{t("button.staffInfo")}</button>
+          <Button
+            text="button.staffInfo"
+            icon={userIcon}
+            onClick={toggleStaffInfo}
+          />
         ) : (
           <></>
         )
