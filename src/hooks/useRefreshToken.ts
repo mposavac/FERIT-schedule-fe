@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAuthDispatch, useAuthState } from "../context";
+import { logoutUser, useAuthDispatch, useAuthState } from "../context";
 import { refreshToken } from "../context/actions";
 import axiosInstance from "../utils/axiosInstance";
 
@@ -12,16 +12,26 @@ export const useRefreshToken = () => {
       (response) => response,
       async (err) => {
         const prevReq = err?.config;
-        if (err?.response?.status === 401) {
-          const newAccessToken = await refreshToken(dispatch, {
-            id,
-            refresh_token,
-          });
-          prevReq.sent = true;
-          prevReq.headers["Authorization"] = `Bearer ${newAccessToken}`;
-          return axiosInstance(prevReq);
+        if (err?.response?.status === 401 && !prevReq?.sent) {
+          if (prevReq?.url === "/auth/refresh") {
+            prevReq.sent = true;
+            await logoutUser(dispatch, { id });
+            return Promise.resolve(prevReq);
+          } else if (
+            prevReq?.url !== "/auth/logout" &&
+            prevReq?.url !== "/auth/refresh"
+          ) {
+            prevReq.sent = true;
+            const newAccessToken = await refreshToken(dispatch, {
+              id,
+              refresh_token,
+            });
+            prevReq.headers["Authorization"] = `Bearer ${newAccessToken}`;
+            return axiosInstance(prevReq);
+          }
+        } else {
+          throw err;
         }
-        throw err;
       }
     );
     return () => {

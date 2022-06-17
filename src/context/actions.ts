@@ -55,14 +55,15 @@ export const refreshToken = async (
 
 export const logoutUser = async (
   dispatch: any,
-  payload: { id: string | undefined; access_token: string | undefined }
+  payload: { id: string | undefined }
 ) => {
-  await axios.post(
-    "/auth/logout",
-    { id: payload.id },
-    { headers: { Authorization: `Bearer ${payload.access_token}` } }
-  );
-
+  await axios
+    .post("/auth/logout", { id: payload.id })
+    .then(() => {})
+    .catch((e) => {
+      if (e?.response && e?.response?.data)
+        throw new Error(e.response.data.error);
+    });
   dispatch({
     type: "LOGOUT_SUCCESS",
   });

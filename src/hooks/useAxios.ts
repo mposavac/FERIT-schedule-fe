@@ -29,9 +29,9 @@ export const useAxios = <S>(url: string, fetchOnLoad?: boolean) => {
       })
       .catch((e) => {
         if (e?.response && e?.response?.data) {
-          throw new Error(e?.response?.data?.error);
+          return e?.response?.data?.error || e?.response?.data?.message;
         }
-        throw new Error(e);
+        return e;
       });
   };
 
