@@ -19,7 +19,7 @@ export default function CalendarPresenter({
   );
 
   return (
-    <div className="calendar__container">
+    <div className={`calendar__container ${!singleDayView ? "margin" : ""}`}>
       {!singleDayView && (
         <div className="calendar__container__navigation">
           <img
@@ -30,7 +30,7 @@ export default function CalendarPresenter({
           />
           <img
             className={`right ${
-              calendarEvents?.length * 265 <
+              calendarEvents?.length * 265 <=
               transformOffset * -1 + chunkSize * 265
                 ? "disabled"
                 : ""
