@@ -9,13 +9,14 @@ export default function SchedulerForm({
   handleSearch,
 }: SchedulerFormProps) {
   return (
-    <SearchForm
-      searchText={"form.scheduler"}
-      date={values.date}
-      handleFormChange={handleFormChange}
-      handleSearch={handleSearch}
-    >
+    <SearchForm searchText={"form.scheduler"} handleSearch={handleSearch}>
       <>
+        <InputField
+          name="date"
+          type="date"
+          value={values.date}
+          handleChange={handleFormChange}
+        />
         <InputField
           name="startTime"
           type="time"

@@ -18,7 +18,7 @@ export default function DayPresenter({ dailyProps }: DayPresenterProps) {
     >
       <p className="title">{event.title}</p>
       <p className="employee">{event.staff}</p>
-      <p className="time">{event.timeInfo}</p>
+      {parseInt(event.height) > 40 && <p className="time">{event.timeInfo}</p>}
     </div>
   );
 

@@ -6,8 +6,10 @@
   justify-content: center;
   min-width: 400px;
   color: $color-grey-dark;
-  margin-bottom: 50px;
-  margin-top: 65px;
+  &.margin {
+    margin-bottom: 50px;
+    margin-top: 65px;
+  }
   &__navigation {
     display: flex;
     justify-content: center;
