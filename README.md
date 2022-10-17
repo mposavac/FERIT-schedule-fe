@@ -1,3 +1,15 @@
+# FERIT RASPORED
+
+This project is a web application for managing the room availability and schedule of the staff as well as finding the best suitable room according to the user's needs.
+The application is developed as a part of the master’s thesis.
+
+## Used technologies:
+
+- React
+- React Hooks
+- Typescript
+- Sass
+
 ### `yarn start`
 
 Runs the app in the development mode.\
